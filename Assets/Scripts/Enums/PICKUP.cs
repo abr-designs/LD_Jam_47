@@ -1,5 +1,6 @@
 ﻿public enum PICKUP
 {
-    NONE,
-    ROCKET
+    OBSTACLE,
+    PICKUP,
+    DIFFICULTY
 }

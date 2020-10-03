@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Obsolete]
 public class RB_Move : MonoBehaviour, ICanCrash
 {
     public bool isDead { get; private set; }
@@ -75,7 +76,7 @@ public class RB_Move : MonoBehaviour, ICanCrash
         if (Input.GetKeyDown(KeyCode.Space))
         {
             SpawnRocket();
-            RecordUsePickup(PICKUP.ROCKET);
+            RecordUsePickup(ABILITY.ROCKET);
         }
 
         var forward = Vector3.ProjectOnPlane(cameraTranform.forward.normalized, Vector3.up);
@@ -172,7 +173,7 @@ public class RB_Move : MonoBehaviour, ICanCrash
 
     public struct InputEvent
     {
-        public PICKUP item;
+        public ABILITY item;
         public Vector3 position;
         public Vector3 direction;
         public SPRITE sprite;
@@ -204,14 +205,14 @@ public class RB_Move : MonoBehaviour, ICanCrash
         });
     }
 
-    private void RecordUsePickup(PICKUP pickup)
+    private void RecordUsePickup(ABILITY ability)
     {
         if (!recording)
             return;
         
         _inputEvents.Add(new InputEvent
         {
-            item = pickup,
+            item = ability,
             position = mainTransform.position,
             direction = mainTransform.forward.normalized,
             sprite = _sprite,

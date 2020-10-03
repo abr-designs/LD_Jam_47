@@ -21,33 +21,23 @@
   <component name="ChangeListManager">
     <list default="true" id="8a6f517e-e7ea-49f6-afe5-cdd8a36b488c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ICanCrash.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ICanCrash.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PICKUP.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PICKUP.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickupBase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PickupBase.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerup.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerup.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RB_Move.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RB_Move.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Rocket.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartingLine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StartingLine.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test_AI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test_AI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/PICKUP.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/ABILITY.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/PICKUP.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/ABILITY.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/IInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +52,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/SPRITE.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8691AD70-05ED-4755-A182-8378FF0B52B1/22/7d62e036/Component.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/IInput.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -78,14 +68,19 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/PICKUP.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RB_Move.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Test_AI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/SPRITE.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ABILITY.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Enums/PICKUP.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" />
       </list>
     </option>
   </component>
@@ -131,7 +126,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601683166654</updated>
       <workItem from="1601683177323" duration="15421000" />
-      <workItem from="1601726701186" duration="11098000" />
+      <workItem from="1601726701186" duration="12894000" />
     </task>
     <servers />
   </component>
@@ -156,14 +151,14 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1132" y="194" key="RiderGenerateDialog" timestamp="1601738134266">
+    <state x="-1132" y="194" key="RiderGenerateDialog" timestamp="1601739302024">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1132" y="194" key="RiderGenerateDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601738134266" />
-    <state x="43" y="-12" width="1589" height="1043" key="dock-window-1" timestamp="1601737181432">
+    <state x="-1132" y="194" key="RiderGenerateDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601739302024" />
+    <state x="43" y="-12" width="1589" height="1043" maximized="true" key="dock-window-1" timestamp="1601739913522">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="43" y="-12" width="1589" height="1043" key="dock-window-1/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601737181432" />
+    <state x="43" y="-12" width="1589" height="1043" maximized="true" key="dock-window-1/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601739913522" />
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601731572246">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>

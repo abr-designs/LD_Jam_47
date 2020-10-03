@@ -13,18 +13,22 @@
           <e p="Abilities" t="Include">
             <e p="Rocket.cs" t="Include" />
           </e>
+          <e p="AIRacer.cs" t="Include" />
           <e p="Enums" t="Include">
+            <e p="ABILITY.cs" t="Include" />
             <e p="PICKUP.cs" t="Include" />
             <e p="SPRITE.cs" t="Include" />
           </e>
-          <e p="IInput.cs" t="Include" />
+          <e p="Inputs" t="Include">
+            <e p="IInput.cs" t="Include" />
+            <e p="LInput.cs" t="Include" />
+          </e>
           <e p="Interfaces" t="Include">
             <e p="ICanCrash.cs" t="Include" />
           </e>
           <e p="Level" t="Include">
             <e p="StartingLine.cs" t="Include" />
           </e>
-          <e p="LInput.cs" t="Include" />
           <e p="Pickups" t="Include">
             <e p="PickupBase.cs" t="Include" />
             <e p="Powerup.cs" t="Include" />

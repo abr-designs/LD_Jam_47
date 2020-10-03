@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class Manager : MonoBehaviour
 {
     [SerializeField]
-    private RB_Move player;
+    private Player player;
     [SerializeField]
     private GameObject aiPrefab;
 
@@ -27,18 +27,18 @@ public class Manager : MonoBehaviour
 
     //====================================================================================================================//
 
-    public void CollectedPowerUp(Powerup.TYPE type)
+    public void CollectedPowerUp(PICKUP type)
     {
         ShowRandomObstacle(true);
         
         switch (type)
         {
-            case Powerup.TYPE.OBSTACLE:
+            case PICKUP.OBSTACLE:
                 ShowRandomObstacle();
                 break;
-            case Powerup.TYPE.PICKUP:
+            case PICKUP.PICKUP:
                 break;
-            case Powerup.TYPE.DIFFICULTY:
+            case PICKUP.DIFFICULTY:
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -76,26 +76,26 @@ public class Manager : MonoBehaviour
 
     public void TriggerLap()
     {
-        var inputEvents = player.InputEvents;
+        var recordEvents = player.RecordEvents;
 
-        if (inputEvents.Count > 0)
+        if (recordEvents.Count > 0)
         {
             var count = false/*Random.value > 0.5 */? 1 : Random.Range(2, 5);
             for (var i = 0; i < count; i++)
             {
-                SpawnAi(inputEvents, count > 1);
+                SpawnAi(recordEvents, count > 1);
             }
         }
         
         player.TriggerNewLap();
     }
 
-    private void SpawnAi(IReadOnlyList<RB_Move.InputEvent> inputEvents, bool elastic = false)
+    private void SpawnAi(IReadOnlyList<RecordEvent> recordEvents, bool elastic = false)
     {
-        var temp = Instantiate(aiPrefab).GetComponentInChildren<Test_AI>();
+        var temp = Instantiate(aiPrefab).GetComponentInChildren<AIRacer>();
         temp.SetTransform(_startLocation + Vector3.right * Random.Range(-5, 5), _startRotation);
-        
-        temp.PlayBack(new List<RB_Move.InputEvent>(inputEvents), elastic);
+
+        temp.PlayBack(new List<RecordEvent>(recordEvents), elastic ? Random.Range(1f, 4f) : 0);
     }
 
     //====================================================================================================================//

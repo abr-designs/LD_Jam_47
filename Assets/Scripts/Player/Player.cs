@@ -17,7 +17,7 @@ public class Player : RacerBase, IInput
     //Properties
     //====================================================================================================================//
 
-    [SerializeField]
+    [SerializeField, Header("Player")]
     private Transform cameraTransform;
 
     [SerializeField]
@@ -202,7 +202,7 @@ public class Player : RacerBase, IInput
         });
     }
 
-    private void RecordUsePickup(PICKUP pickup)
+    private void RecordUsePickup(ABILITY ability)
     {
         if (!_recording)
             return;
@@ -212,7 +212,7 @@ public class Player : RacerBase, IInput
             Position = followTransform.position,
             Direction = followTransform.forward.normalized,
             Sprite = CurrentSprite,
-            Item = pickup,
+            Item = ability,
             Time = Time.time
         });
     }

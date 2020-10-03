@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Obsolete]
 public class Test_AI : MonoBehaviour, ICanCrash
 {
     [SerializeField]
@@ -199,9 +200,9 @@ public class Test_AI : MonoBehaviour, ICanCrash
 
             switch (_inputEvents[currentIndex].item)
             {
-                case PICKUP.NONE:
+                case ABILITY.NONE:
                     break;
-                case PICKUP.ROCKET:
+                case ABILITY.ROCKET:
                     SpawnRocket();
                     break;
                 default:
@@ -261,7 +262,7 @@ public class Test_AI : MonoBehaviour, ICanCrash
         {
             var temp = _inputEvents[i - 1];
             
-            Gizmos.color = temp.item == PICKUP.NONE ? Color.white : Color.blue;
+            Gizmos.color = temp.item == ABILITY.NONE ? Color.white : Color.blue;
 
             
             Gizmos.DrawWireSphere(temp.position, 0.3f);
