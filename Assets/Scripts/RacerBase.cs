@@ -67,16 +67,19 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     protected void SetSprite(SPRITE sprite)
     {
         int index;
+        spriteRenderer.flipX = false;
         switch (sprite)
         {
             case SPRITE.FORWARD:
                 index = 0;
+                
                 break;
             case SPRITE.LEFT:
                 index = 1;
+                spriteRenderer.flipX = true;
                 break;
             case SPRITE.RIGHT:
-                index = 2;
+                index = 1;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(sprite), sprite, null);

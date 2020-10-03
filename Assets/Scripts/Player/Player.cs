@@ -66,11 +66,15 @@ public class Player : RacerBase, IInput
 
         if(_turning)
             followTransform.rotation *= Quaternion.Euler(Vector3.up * (turnSpeed * Time.deltaTime * _turnDirection));
-        
+
+        CheckForGround();
     }
 
     private void LateUpdate()
     {
+        if (isDead)
+            return;
+        
         SetSprite(CurrentSprite);
     }
 
@@ -82,9 +86,10 @@ public class Player : RacerBase, IInput
             rigidbody.AddForceAtPosition(_cameraForward * forwardForce, forcePosition, ForceMode.Impulse);
         }
 
-        if (_turning)
+        if (_turning && _grounded)
         {
-            rigidbody.velocity = followTransform.forward.normalized * rigidbody.velocity.magnitude;
+            var velocity = followTransform.forward.normalized * rigidbody.velocity.magnitude;
+            rigidbody.velocity = velocity;
         }
     }
 
@@ -100,11 +105,15 @@ public class Player : RacerBase, IInput
     public override void Crashed(Vector3 point)
     {
         isDead = true;
-        spriteRenderer.color = new Color(0.2f, 0.2f, 0.2f);
+        
         rigidbody.AddExplosionForce(20, point, 5);
-        spriteRenderer.transform.SetParent(rigidbody.transform);
-        rigidbody.angularDrag = 1;
-        rigidbody.drag = 1f;
+        rigidbody.angularDrag = 3;
+        rigidbody.drag = 3;
+        
+        
+        //spriteRenderer.transform.SetParent(rigidbody.transform);
+        spriteRenderer.sprite = sprites[2];
+        spriteRenderer.color = new Color(0.3f, 0.3f, 0.3f);
     }
 
     //IInput Functions
@@ -219,6 +228,14 @@ public class Player : RacerBase, IInput
 
     #endregion //Recording
 
+    [SerializeField]
+    private LayerMask groundCheckMask;
+
+    private bool _grounded;
+    private void CheckForGround()
+    {
+        _grounded = Physics.Raycast(followTransform.position, Vector3.down, 0.6f, groundCheckMask.value);
+    }
 
 
 }

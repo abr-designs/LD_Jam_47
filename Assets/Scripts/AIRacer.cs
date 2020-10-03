@@ -38,6 +38,9 @@ public class AIRacer : RacerBase
 
     protected override void Update()
     {
+        followTransform.position = rigidbody.position;
+        followTransform.rotation = rigidbody.rotation;
+        
         if (isDead)
             return;
         
@@ -61,7 +64,7 @@ public class AIRacer : RacerBase
         else
             rigidbody.velocity = direction * (magnitude * setForce * Time.fixedDeltaTime);
         
-        followTransform.position = rigidbody.position;
+        
     }
 
     //ICanCrash Functions
