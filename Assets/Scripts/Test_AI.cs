@@ -38,6 +38,9 @@ public class Test_AI : MonoBehaviour, ICanCrash
     private float lastDeltaTime;
 
     private bool _forward, _left, _right;
+    
+    [SerializeField]
+    private GameObject rocketPrefab;
 
 
     //Unity Functions
@@ -193,6 +196,17 @@ public class Test_AI : MonoBehaviour, ICanCrash
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            switch (_inputEvents[currentIndex].item)
+            {
+                case PICKUP.NONE:
+                    break;
+                case PICKUP.ROCKET:
+                    SpawnRocket();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
             
             _t = 0f;
             return;
@@ -229,17 +243,27 @@ public class Test_AI : MonoBehaviour, ICanCrash
             currentIndex = 0;*/
 
     }
+    
+    private void SpawnRocket()
+    {
+        var rocket = Instantiate(rocketPrefab, mainTransform.position, mainTransform.rotation);
+        rocket.GetComponent<Rocket>().Init(mainTransform.forward.normalized, GetComponent<Collider>());
+    }
 
     private void OnDrawGizmosSelected()
     {
         if (!replaying)
             return;
         
-        Gizmos.color = Color.white;
+        
         
         for (int i = 1; i < _inputEvents.Count; i++)
         {
             var temp = _inputEvents[i - 1];
+            
+            Gizmos.color = temp.item == PICKUP.NONE ? Color.white : Color.blue;
+
+            
             Gizmos.DrawWireSphere(temp.position, 0.3f);
             Gizmos.DrawLine(_inputEvents[i].position, temp.position);
         }

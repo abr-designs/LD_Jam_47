@@ -171,6 +171,8 @@ MonoBehaviour:
   rigidbody: {fileID: 864213254346643446}
   forwardForce: 0.6
   turnForce: 50
+  rocketPrefab: {fileID: 4734114607623212167, guid: c032f8d9c20ac5846a0f12e6cade39c9,
+    type: 3}
   isElastic: 0
   elasticForce: 2
   setForce: 115

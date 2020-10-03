@@ -71,9 +71,12 @@ public class RB_Move : MonoBehaviour, ICanCrash
         
         if (rigidbody is null)
             return;
-        
-        if(Input.GetKeyDown(KeyCode.Space))
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             SpawnRocket();
+            RecordUsePickup(PICKUP.ROCKET);
+        }
 
         var forward = Vector3.ProjectOnPlane(cameraTranform.forward.normalized, Vector3.up);
 
@@ -174,6 +177,7 @@ public class RB_Move : MonoBehaviour, ICanCrash
 
     public struct InputEvent
     {
+        public PICKUP item;
         public Vector3 position;
         public Vector3 direction;
         public SPRITE sprite;
@@ -198,6 +202,21 @@ public class RB_Move : MonoBehaviour, ICanCrash
         
         _inputEvents.Add(new InputEvent
         {
+            position = mainTransform.position,
+            direction = mainTransform.forward.normalized,
+            sprite = _sprite,
+            time = Time.time
+        });
+    }
+
+    private void RecordUsePickup(PICKUP pickup)
+    {
+        if (!recording)
+            return;
+        
+        _inputEvents.Add(new InputEvent
+        {
+            item = pickup,
             position = mainTransform.position,
             direction = mainTransform.forward.normalized,
             sprite = _sprite,
