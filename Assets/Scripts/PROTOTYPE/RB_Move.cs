@@ -155,12 +155,7 @@ public class RB_Move : MonoBehaviour, ICanCrash
     }
     
     
-    public enum SPRITE
-    {
-        FORWARD,
-        LEFT,
-        RIGHT,
-    }
+    
     /*public enum KEY
     {
         FORWARD,

@@ -184,13 +184,13 @@ public class Test_AI : MonoBehaviour, ICanCrash
 
             switch (_inputEvents[currentIndex].sprite)
             {
-                case RB_Move.SPRITE.FORWARD:
+                case SPRITE.FORWARD:
                     spriteRenderer.sprite = ForwardSprite;
                     break;
-                case RB_Move.SPRITE.LEFT:
+                case SPRITE.LEFT:
                     spriteRenderer.sprite = LeftSprite;
                     break;
-                case RB_Move.SPRITE.RIGHT:
+                case SPRITE.RIGHT:
                     spriteRenderer.sprite = RightSprite;
                     break;
                 default:

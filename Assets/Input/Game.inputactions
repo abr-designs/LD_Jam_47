@@ -1,0 +1,96 @@
+{
+    "name": "Game",
+    "maps": [
+        {
+            "name": "Default",
+            "id": "1466ffe8-3f24-4462-8904-82800375ac13",
+            "actions": [
+                {
+                    "name": "Movement",
+                    "type": "Button",
+                    "id": "986783ee-7ea3-4caf-981a-29ca6eebf57a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Turning",
+                    "type": "Button",
+                    "id": "51bd6ad0-b29d-42f4-9b0a-596eefbfde9b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "WS",
+                    "id": "e01879f7-4f43-4be7-aff1-f505e9cd2b4f",
+                    "path": "1DAxis",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "3e6cc05e-beda-4232-826e-f6e86a3dfb9d",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "007b0a55-7f94-431f-b0af-21cf3edac57c",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "AD",
+                    "id": "00e8edc4-e2f4-43de-9452-6690c5e97198",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turning",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "b87dbc40-4204-4ec9-8e37-9bd79c08eeba",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turning",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "f2add120-2923-405e-9d23-afd99a6cdf8d",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Turning",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
