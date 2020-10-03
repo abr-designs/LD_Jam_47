@@ -7,8 +7,6 @@ public class Manager : MonoBehaviour
 {
     [SerializeField]
     private Player player;
-    [SerializeField]
-    private GameObject aiPrefab;
 
     [SerializeField]
     private GameObject[] obstacles;
@@ -92,7 +90,7 @@ public class Manager : MonoBehaviour
 
     private void SpawnAi(IReadOnlyList<RecordEvent> recordEvents, bool elastic = false)
     {
-        var temp = Instantiate(aiPrefab).GetComponentInChildren<AIRacer>();
+        var temp = FactoryManager.Instance.CreateAiRacer();
         temp.SetTransform(_startLocation + Vector3.right * Random.Range(-5, 5), _startRotation);
 
         temp.PlayBack(new List<RecordEvent>(recordEvents), elastic ? Random.Range(1f, 4f) : 0);

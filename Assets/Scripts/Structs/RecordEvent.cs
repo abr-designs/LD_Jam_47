@@ -2,7 +2,7 @@
 
 public struct RecordEvent
 {
-    public ABILITY Item;
+    public ABILITY Ability;
     public Vector3 Position;
     public Vector3 Direction;
     public SPRITE Sprite;

@@ -7,6 +7,8 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     protected static Manager _manager;
     //ICanCrash Properties
     //====================================================================================================================//
+
+    public bool invulnerable { get; set; }
     
     public bool isDead { get; protected set; }
     public abstract float impactForce { get; }
@@ -20,6 +22,12 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     [SerializeField] 
     protected SpriteRenderer spriteRenderer;
     protected SPRITE CurrentSprite;
+
+    //====================================================================================================================//
+    
+    [SerializeField, Header("Ground Check")]
+    private LayerMask groundCheckMask;
+    protected bool Grounded;
 
     //====================================================================================================================//
     
@@ -50,10 +58,14 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
 
     public void OnCollisionEnter(Collision other)
     {
+        if (invulnerable)
+            return;
+        
         if (other.impulse.magnitude < impactForce)
             return;
         
         Crashed(other.contacts[0].point);
+        CreateCrashEffects(other);
     }
 
     //ICanCrash Functions
@@ -86,5 +98,27 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
         }
 
         spriteRenderer.sprite = sprites[index];
+    }
+
+
+    //====================================================================================================================//
+
+    private void CreateCrashEffects(Collision collision)
+    {
+        var position = collision.contacts[0].point;
+        var normal = collision.contacts[0].normal;
+
+        var fire = FactoryManager.Instance.CreateFireEffect().transform;
+        fire.SetParent(followTransform);
+        fire.localPosition = Vector3.down;
+
+        var explosion = FactoryManager.Instance.CreateExplosionEffect().transform;
+        explosion.position = position;
+        explosion.forward = normal;
+    }
+    
+    protected void CheckForGround()
+    {
+        Grounded = Physics.Raycast(followTransform.position, Vector3.down, 0.6f, groundCheckMask.value);
     }
 }

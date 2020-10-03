@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Obsolete]
-public class RB_Move : MonoBehaviour, ICanCrash
+public class RB_Move : MonoBehaviour
 {
+    public bool invulnerable { get; set; }
     public bool isDead { get; private set; }
     public float impactForce => 110f;
     

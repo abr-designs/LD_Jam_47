@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Obsolete]
-public class Test_AI : MonoBehaviour, ICanCrash
+public class Test_AI : MonoBehaviour
 {
     [SerializeField]
     private Sprite ForwardSprite;
@@ -276,6 +276,7 @@ public class Test_AI : MonoBehaviour, ICanCrash
 
     //====================================================================================================================//
 
+    public bool invulnerable { get; set; }
     public bool isDead { get; private set; }
     public float impactForce => 150f;
     public void OnCollisionEnter(Collision other)

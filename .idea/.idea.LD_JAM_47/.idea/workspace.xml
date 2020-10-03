@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,20 +23,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a6f517e-e7ea-49f6-afe5-cdd8a36b488c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Ground.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Wall.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Input/Game.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/Game.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BLUE.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/BLUE.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/GREEN.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/GREEN.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/RED.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/RED.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Shadow.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Shadow.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/StartLine.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/StartLine.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Wall.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Track.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Track.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interfaces/ICanCrash.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/ICanCrash.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/3368933347_380a739ddf_b.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/3368933347_380a739ddf_b.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/bowser.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/bowser.gif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/mario.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/mario.gif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Level/Fence.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Level/Fence.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,11 +65,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/FactoryManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums/SPRITE.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8691AD70-05ED-4755-A182-8378FF0B52B1/22/7d62e036/Component.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -69,15 +89,17 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LInput.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/IInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ABILITY.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/PICKUP.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/ICanCrash.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/FactoryManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" />
       </list>
     </option>
   </component>
@@ -123,7 +145,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601683166654</updated>
       <workItem from="1601683177323" duration="15421000" />
-      <workItem from="1601726701186" duration="15364000" />
+      <workItem from="1601726701186" duration="18489000" />
     </task>
     <servers />
   </component>
@@ -156,10 +178,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="43" y="-12" width="1589" height="1043" maximized="true" key="dock-window-1/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601739913522" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601751369520">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601766475763">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601731572246" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601751369520" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601766475763" />
   </component>
 </project>

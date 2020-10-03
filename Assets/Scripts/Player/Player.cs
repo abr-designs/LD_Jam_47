@@ -25,6 +25,12 @@ public class Player : RacerBase, IInput
     [SerializeField]
     private float turnSpeed = 50;
 
+    [SerializeField] 
+    private Transform trailParent;
+
+    
+    private ABILITY _activeAbility;
+
     //====================================================================================================================//
     
     private List<RecordEvent> _recordEvents = new List<RecordEvent>();
@@ -53,6 +59,12 @@ public class Player : RacerBase, IInput
     protected override void Update()
     {
         followTransform.position = rigidbody.position;
+
+        if (Grounded)
+        {
+            trailParent.position = followTransform.position;
+            trailParent.rotation = followTransform.rotation;
+        }
 
         if (isDead)
             return;
@@ -86,7 +98,7 @@ public class Player : RacerBase, IInput
             rigidbody.AddForceAtPosition(_cameraForward * forwardForce, forcePosition, ForceMode.Impulse);
         }
 
-        if (_turning && _grounded)
+        if (_turning && Grounded)
         {
             var velocity = followTransform.forward.normalized * rigidbody.velocity.magnitude;
             rigidbody.velocity = velocity;
@@ -128,6 +140,9 @@ public class Player : RacerBase, IInput
         
         LInput.Input.Default.Turning.Enable();
         LInput.Input.Default.Turning.performed += ProcessTurning;
+        
+        LInput.Input.Default.Use_Ability.Enable();
+        LInput.Input.Default.Use_Ability.performed += ProccessAbility;
     }
 
 
@@ -139,6 +154,9 @@ public class Player : RacerBase, IInput
         
         LInput.Input.Default.Turning.Disable();
         LInput.Input.Default.Turning.performed -= ProcessTurning;
+        
+        LInput.Input.Default.Use_Ability.Disable();
+        LInput.Input.Default.Use_Ability.performed -= ProccessAbility;
     }
     
     //Inputs
@@ -176,6 +194,24 @@ public class Player : RacerBase, IInput
         } 
     }
 
+    private void ProccessAbility(InputAction.CallbackContext ctx)
+    {
+        if (_activeAbility == ABILITY.NONE)
+            return;
+
+        switch (_activeAbility)
+        {
+            case ABILITY.ROCKET:
+                var rocket = FactoryManager.Instance.CreateRocket();
+                rocket.Init(followTransform.forward.normalized, collider);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+        
+        RecordUseAbility(_activeAbility);
+    }
+
     #endregion //Inputs
 
     //Player Functions
@@ -211,7 +247,7 @@ public class Player : RacerBase, IInput
         });
     }
 
-    private void RecordUsePickup(ABILITY ability)
+    private void RecordUseAbility(ABILITY ability)
     {
         if (!_recording)
             return;
@@ -221,21 +257,14 @@ public class Player : RacerBase, IInput
             Position = followTransform.position,
             Direction = followTransform.forward.normalized,
             Sprite = CurrentSprite,
-            Item = ability,
+            Ability = ability,
             Time = Time.time
         });
     }
 
     #endregion //Recording
 
-    [SerializeField]
-    private LayerMask groundCheckMask;
-
-    private bool _grounded;
-    private void CheckForGround()
-    {
-        _grounded = Physics.Raycast(followTransform.position, Vector3.down, 0.6f, groundCheckMask.value);
-    }
+    
 
 
 }

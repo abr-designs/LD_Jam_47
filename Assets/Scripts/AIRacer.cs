@@ -39,7 +39,7 @@ public class AIRacer : RacerBase
     protected override void Update()
     {
         followTransform.position = rigidbody.position;
-        followTransform.rotation = rigidbody.rotation;
+        //followTransform.rotation = rigidbody.rotation;
         
         if (isDead)
             return;
@@ -138,7 +138,7 @@ public class AIRacer : RacerBase
 
             SetSprite(_recordEvents[_currentIndex].Sprite);
 
-            var item = _recordEvents[_currentIndex].Item;
+            var item = _recordEvents[_currentIndex].Ability;
             if (item != ABILITY.NONE)
                 CreateItem(item);
             
@@ -189,7 +189,7 @@ public class AIRacer : RacerBase
         {
             var temp = _recordEvents[i - 1];
             
-            Gizmos.color = temp.Item == ABILITY.NONE ? Color.white : Color.blue;
+            Gizmos.color = temp.Ability == ABILITY.NONE ? Color.white : Color.blue;
 
             
             Gizmos.DrawWireSphere(temp.Position, 0.3f);
