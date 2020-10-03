@@ -26,14 +26,17 @@ public class Rocket : MonoBehaviour
     {
         if(!ready)
             return;
-        
-        if (!other.gameObject.CompareTag("Racer") && !other.gameObject.CompareTag("Player"))
+
+        if (other.gameObject.GetComponent<ICanCrash>() is ICanCrash iCanCrash)
         {
-            Destroy(gameObject);
-            return;
+            iCanCrash.Crashed(other.contacts[0].point);
         }
-        
-        Destroy(other.gameObject);
+        else if (other.gameObject.GetComponentInParent<ICanCrash>() is ICanCrash iCanCrash2)
+        {
+            iCanCrash2.Crashed(other.contacts[0].point);
+        }
+
+        Destroy(gameObject);
     }
 
     //====================================================================================================================//

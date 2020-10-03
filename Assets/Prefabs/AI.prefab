@@ -122,7 +122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 864213254346643442}
-  - component: {fileID: 6553174092610183774}
+  - component: {fileID: 2464098159227747991}
   - component: {fileID: 864213254346643445}
   - component: {fileID: 864213254346643444}
   - component: {fileID: 864213254346643447}
@@ -148,7 +148,7 @@ Transform:
   m_Father: {fileID: 864213254512742518}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6553174092610183774
+--- !u!114 &2464098159227747991
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,6 +171,12 @@ MonoBehaviour:
   rigidbody: {fileID: 864213254346643446}
   forwardForce: 0.6
   turnForce: 50
+  isElastic: 0
+  elasticForce: 2
+  setForce: 115
+  idealDistanceFromTarget: 7
+  TEMP_currentDistance: 0
+  TEMP_Calc: 0
 --- !u!33 &864213254346643445
 MeshFilter:
   m_ObjectHideFlags: 0

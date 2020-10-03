@@ -20,10 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a6f517e-e7ea-49f6-afe5-cdd8a36b488c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Manager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Powerup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Powerup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/RB_Move.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RB_Move.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Test_AI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Test_AI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,17 +43,20 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Powerup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Test_AI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Manager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/ICanCrash.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/StartingLine.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Test_AI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PickupBase.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Manager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Powerup.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ICanDie.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/ICanCrash.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RB_Move.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Rocket.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Manager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Test_AI.cs" />
       </list>
     </option>
   </component>
@@ -95,7 +102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601683166654</updated>
       <workItem from="1601683177323" duration="15421000" />
-      <workItem from="1601726701186" duration="688000" />
+      <workItem from="1601726701186" duration="6243000" />
     </task>
     <servers />
   </component>
@@ -120,9 +127,13 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601704725498">
+    <state x="-1132" y="194" key="RiderGenerateDialog" timestamp="1601732741887">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601704725498" />
+    <state x="-1132" y="194" key="RiderGenerateDialog/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601732741887" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601731572246">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601731572246" />
   </component>
 </project>

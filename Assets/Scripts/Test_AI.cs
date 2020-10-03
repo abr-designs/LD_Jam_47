@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Test_AI : MonoBehaviour
+public class Test_AI : MonoBehaviour, ICanCrash
 {
     [SerializeField]
     private Sprite ForwardSprite;
@@ -18,6 +18,8 @@ public class Test_AI : MonoBehaviour
     
     [SerializeField]
     private Transform mainTransform;
+
+    private Vector3 _targetPosition;
     
     [SerializeField]
     private new Rigidbody rigidbody;
@@ -40,19 +42,13 @@ public class Test_AI : MonoBehaviour
 
     //Unity Functions
     //====================================================================================================================//
-    
-    // Start is called before the first frame update
-    private void Start()
-    {
-        if(!rigidbody)
-            rigidbody = GetComponent<Rigidbody>();
-
-        rigidbody.isKinematic = true;
-    }
 
     // Update is called once per frame
     private void Update()
     {
+        if (isDead)
+            return;
+        
         if (!replaying)
             return;
 
@@ -90,16 +86,50 @@ public class Test_AI : MonoBehaviour
         
 
     }
+    [SerializeField]
+    private bool isElastic = false;
+    
+    [SerializeField]
+    private float elasticForce = 2f;
+    [SerializeField]
+    private float setForce = 115f;
 
+    [SerializeField]
+    private float idealDistanceFromTarget = 7f;
+
+    [SerializeField]
+    private float TEMP_currentDistance;
+    [SerializeField]
+    private float TEMP_Calc;
     private void FixedUpdate()
     {
+        if (isDead)
+            return;
+        
+        var vector = _targetPosition - rigidbody.position;
+        var direction = vector.normalized;
+        var magnitude = vector.magnitude;
+
+        if(isElastic)
+            rigidbody.velocity += direction * (magnitude * elasticForce * Time.fixedDeltaTime);
+        else
+            rigidbody.velocity = direction * (magnitude * setForce * Time.fixedDeltaTime);
+        
         mainTransform.position = rigidbody.position;
     }
 
     //Others
     //====================================================================================================================//
-    public void PlayBack(IReadOnlyList<RB_Move.InputEvent> inputEvents)
+    public void SetTransform(Vector3 position, Quaternion rotation)
     {
+        rigidbody.position = position;
+        rigidbody.rotation = rotation;
+    }
+    
+    public void PlayBack(IReadOnlyList<RB_Move.InputEvent> inputEvents, bool isElastic)
+    {
+        this.isElastic = isElastic;
+        //TODO Need to add a way of cleaning the last recorded position
         _inputEvents = inputEvents;
         targetIndex = 1;
         currentIndex = 0;
@@ -110,7 +140,17 @@ public class Test_AI : MonoBehaviour
 
     private void NextFrame()
     {
-        _t += Time.deltaTime;
+        var mult = 1f;
+        TEMP_currentDistance = Vector3.Distance(_targetPosition, mainTransform.position);
+        TEMP_Calc =TEMP_currentDistance / idealDistanceFromTarget;
+
+        if (TEMP_Calc > 1f)
+        {
+            mult = Mathf.Clamp01(mult - (TEMP_Calc - 1f));
+        }
+        
+        
+        _t += Time.deltaTime * mult;
         
         
         var target = _inputEvents[targetIndex];
@@ -158,7 +198,7 @@ public class Test_AI : MonoBehaviour
             return;
         }
 
-        rigidbody.position = Vector3.Lerp(current.position, target.position, t);
+        _targetPosition = Vector3.Lerp(current.position, target.position, t);
         mainTransform.forward = Vector3.Lerp(current.direction, target.direction, t);
 
 
@@ -194,7 +234,9 @@ public class Test_AI : MonoBehaviour
     {
         if (!replaying)
             return;
-
+        
+        Gizmos.color = Color.white;
+        
         for (int i = 1; i < _inputEvents.Count; i++)
         {
             var temp = _inputEvents[i - 1];
@@ -202,8 +244,32 @@ public class Test_AI : MonoBehaviour
             Gizmos.DrawLine(_inputEvents[i].position, temp.position);
         }
         Gizmos.DrawLine(_inputEvents[_inputEvents.Count - 1].position, _inputEvents[0].position);
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_targetPosition, 0.4f);
     }
 
     //====================================================================================================================//
-    
+
+    public bool isDead { get; private set; }
+    public float impactForce => 150f;
+    public void OnCollisionEnter(Collision other)
+    {
+        if (!replaying)
+            return;
+        var mag = other.impulse.magnitude;
+        
+        Debug.Log($"Impact Force: {mag}");
+        if (other.impulse.magnitude >= impactForce)
+            Crashed(other.contacts[0].point);
+    }
+
+    public void Crashed(Vector3 point)
+    {
+        isDead = true;
+        spriteRenderer.color = new Color(0.2f, 0.2f, 0.2f);
+        rigidbody.AddExplosionForce(20, point, 5);
+        rigidbody.angularDrag = 1;
+        rigidbody.drag = 1f;
+    }
 }

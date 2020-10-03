@@ -77,20 +77,25 @@ public class Manager : MonoBehaviour
     public void TriggerLap()
     {
         var inputEvents = player.InputEvents;
-        
-        if(inputEvents.Count > 0)
-            SpawnAi(inputEvents);
+
+        if (inputEvents.Count > 0)
+        {
+            var count = false/*Random.value > 0.5 */? 1 : Random.Range(2, 5);
+            for (var i = 0; i < count; i++)
+            {
+                SpawnAi(inputEvents, count > 1);
+            }
+        }
         
         player.TriggerNewLap();
     }
 
-    private void SpawnAi(IReadOnlyList<RB_Move.InputEvent> inputEvents)
+    private void SpawnAi(IReadOnlyList<RB_Move.InputEvent> inputEvents, bool elastic = false)
     {
         var temp = Instantiate(aiPrefab).GetComponentInChildren<Test_AI>();
-        temp.transform.position = _startLocation;
-        temp.transform.rotation = _startRotation;
+        temp.SetTransform(_startLocation + Vector3.right * Random.Range(-5, 5), _startRotation);
         
-        temp.PlayBack(new List<RB_Move.InputEvent>(inputEvents));
+        temp.PlayBack(new List<RB_Move.InputEvent>(inputEvents), elastic);
     }
 
     //====================================================================================================================//

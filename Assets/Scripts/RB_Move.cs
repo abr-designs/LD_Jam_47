@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RB_Move : MonoBehaviour
+public class RB_Move : MonoBehaviour, ICanCrash
 {
+    public bool isDead { get; private set; }
+    public float impactForce => 110f;
+    
     [SerializeField]
     private Sprite ForwardSprite;
     [SerializeField]
@@ -58,6 +61,12 @@ public class RB_Move : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        mainTransform.position = rigidbody.position;
+
+        if (isDead)
+            return;
+        
+        
         TryRecordData();
         
         if (rigidbody is null)
@@ -103,13 +112,32 @@ public class RB_Move : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    //private void FixedUpdate()
+    //{
+    //    mainTransform.position = rigidbody.position;
+    //}
+
+
+
+    public void OnCollisionEnter(Collision other)
     {
-        mainTransform.position = rigidbody.position;
+        if (other.impulse.magnitude >= impactForce)
+            Crashed(other.contacts[0].point);
     }
 
     //Others
     //====================================================================================================================//
+
+    public void Crashed(Vector3 point)
+    {
+        isDead = true;
+        spriteRenderer.color = new Color(0.2f, 0.2f, 0.2f);
+        rigidbody.AddExplosionForce(20, point, 5);
+        spriteRenderer.transform.SetParent(rigidbody.transform);
+        rigidbody.angularDrag = 1;
+        rigidbody.drag = 1f;
+
+    }
 
     private void SpawnRocket()
     {
