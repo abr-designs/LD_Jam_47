@@ -8,6 +8,8 @@
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
           <e p="Manager.cs" t="Include" />
+          <e p="PickupBase.cs" t="Include" />
+          <e p="Powerup.cs" t="Include" />
           <e p="RB_Move.cs" t="Include" />
           <e p="Rocket.cs" t="Include" />
           <e p="StartingLine.cs" t="Include" />

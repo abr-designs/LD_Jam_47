@@ -10,12 +10,21 @@ public class Manager : MonoBehaviour
 
     private Vector3 _startLocation;
     private Quaternion _startRotation;
+
+    //====================================================================================================================//
     
     // Start is called before the first frame update
     private void Start()
     {
         _startLocation = player.transform.position;
         _startRotation = player.transform.rotation;
+    }
+
+    //====================================================================================================================//
+
+    public void CollectedPowerUp(Powerup.TYPE type)
+    {
+        
     }
 
     public void TriggerLap()
@@ -36,4 +45,7 @@ public class Manager : MonoBehaviour
         
         temp.PlayBack(new List<RB_Move.InputEvent>(inputEvents));
     }
+
+    //====================================================================================================================//
+    
 }
