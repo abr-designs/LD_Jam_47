@@ -29,9 +29,11 @@ public class Test_AI : MonoBehaviour
     private float turnForce;
     
     private bool replaying;
+    private int targetIndex;
     private int currentIndex;
-    private List<RB_Move.ButtonEvent> _buttonEvents;
+    private IReadOnlyList<RB_Move.InputEvent> _inputEvents;
     private float _t;
+    private float lastDeltaTime;
 
     private bool _forward, _left, _right;
 
@@ -44,6 +46,8 @@ public class Test_AI : MonoBehaviour
     {
         if(!rigidbody)
             rigidbody = GetComponent<Rigidbody>();
+
+        rigidbody.isKinematic = true;
     }
 
     // Update is called once per frame
@@ -54,7 +58,7 @@ public class Test_AI : MonoBehaviour
 
         NextFrame();
         
-        if (rigidbody is null)
+        /*if (rigidbody is null)
             return;
 
         var forward = mainTransform.forward.normalized;
@@ -81,7 +85,7 @@ public class Test_AI : MonoBehaviour
             spriteRenderer.sprite = ForwardSprite;
         }
         
-        Debug.DrawLine( mainTransform.position,  mainTransform.position + rigidbody.velocity.normalized, Color.green);
+        Debug.DrawLine( mainTransform.position,  mainTransform.position + rigidbody.velocity.normalized, Color.green);*/
 
         
 
@@ -94,9 +98,10 @@ public class Test_AI : MonoBehaviour
 
     //Others
     //====================================================================================================================//
-    public void PlayBack(List<RB_Move.ButtonEvent> buttonEvents)
+    public void PlayBack(IReadOnlyList<RB_Move.InputEvent> inputEvents)
     {
-        _buttonEvents = buttonEvents;
+        _inputEvents = inputEvents;
+        targetIndex = 1;
         currentIndex = 0;
         _t = 0;
 
@@ -106,21 +111,73 @@ public class Test_AI : MonoBehaviour
     private void NextFrame()
     {
         _t += Time.deltaTime;
+        
+        
+        var target = _inputEvents[targetIndex];
+        var current = _inputEvents[currentIndex];
 
-        if (_t < _buttonEvents[currentIndex].time)
+        var time = target.time - current.time;
+
+        if (time < 0) 
+            time = lastDeltaTime;
+
+        var t = _t / time;
+
+        if (t >= 1f)
+        {
+            lastDeltaTime = time;
+            currentIndex++;
+            targetIndex++;
+
+            if (targetIndex >= _inputEvents.Count)
+            {
+                targetIndex = 0;
+            }
+
+            if (currentIndex >= _inputEvents.Count)
+            {
+                currentIndex = 0;
+            }
+
+            switch (_inputEvents[currentIndex].sprite)
+            {
+                case RB_Move.SPRITE.FORWARD:
+                    spriteRenderer.sprite = ForwardSprite;
+                    break;
+                case RB_Move.SPRITE.LEFT:
+                    spriteRenderer.sprite = LeftSprite;
+                    break;
+                case RB_Move.SPRITE.RIGHT:
+                    spriteRenderer.sprite = RightSprite;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
+            _t = 0f;
+            return;
+        }
+
+        rigidbody.position = Vector3.Lerp(current.position, target.position, t);
+        mainTransform.forward = Vector3.Lerp(current.direction, target.direction, t);
+
+
+        /*_t += Time.deltaTime;
+
+        if (_t < _inputEvents[currentIndex].time)
             return;
 
 
-        switch (_buttonEvents[currentIndex].key)
+        switch (_inputEvents[currentIndex].key)
         {
             case RB_Move.KEY.FORWARD:
-                _forward = _buttonEvents[currentIndex].state;
+                _forward = _inputEvents[currentIndex].state;
                 break;
             case RB_Move.KEY.LEFT:
-                _left = _buttonEvents[currentIndex].state;
+                _left = _inputEvents[currentIndex].state;
                 break;
             case RB_Move.KEY.RIGHT:
-                _right = _buttonEvents[currentIndex].state;
+                _right = _inputEvents[currentIndex].state;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -128,9 +185,23 @@ public class Test_AI : MonoBehaviour
 
         currentIndex++;
 
-        if (currentIndex >= _buttonEvents.Count)
-            currentIndex = 0;
+        if (currentIndex >= _inputEvents.Count)
+            currentIndex = 0;*/
 
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (!replaying)
+            return;
+
+        for (int i = 1; i < _inputEvents.Count; i++)
+        {
+            var temp = _inputEvents[i - 1];
+            Gizmos.DrawWireSphere(temp.position, 0.3f);
+            Gizmos.DrawLine(_inputEvents[i].position, temp.position);
+        }
+        Gizmos.DrawLine(_inputEvents[_inputEvents.Count - 1].position, _inputEvents[0].position);
     }
 
     //====================================================================================================================//

@@ -18,20 +18,22 @@ public class Manager : MonoBehaviour
         _startRotation = player.transform.rotation;
     }
 
-    // Update is called once per frame
-    private void Update()
+    public void TriggerLap()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-            SpawnAi(player.ButtonEvents);
-
+        var inputEvents = player.InputEvents;
+        
+        if(inputEvents.Count > 0)
+            SpawnAi(inputEvents);
+        
+        player.TriggerNewLap();
     }
 
-    private void SpawnAi(List<RB_Move.ButtonEvent> buttonEvents)
+    private void SpawnAi(IReadOnlyList<RB_Move.InputEvent> inputEvents)
     {
         var temp = Instantiate(aiPrefab).GetComponentInChildren<Test_AI>();
         temp.transform.position = _startLocation;
         temp.transform.rotation = _startRotation;
         
-        temp.PlayBack(buttonEvents);
+        temp.PlayBack(new List<RB_Move.InputEvent>(inputEvents));
     }
 }

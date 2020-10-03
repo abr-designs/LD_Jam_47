@@ -24,6 +24,8 @@ public class RB_Move : MonoBehaviour
     
     [SerializeField]
     private new Rigidbody rigidbody;
+
+    private new Collider collider;
     
 
     [SerializeField]
@@ -31,7 +33,15 @@ public class RB_Move : MonoBehaviour
     [SerializeField]
     private float turnForce;
 
+    private bool recording;
+    private float recordTime = 0.3f;
+    private float _t;
 
+    [SerializeField]
+    private GameObject rocketPrefab;
+
+    private SPRITE _sprite;
+    
     //Unity Functions
     //====================================================================================================================//
     
@@ -40,15 +50,20 @@ public class RB_Move : MonoBehaviour
     {
         if(!rigidbody)
             rigidbody = GetComponent<Rigidbody>();
+
+        collider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        ReadInputs();
+        TryRecordData();
         
         if (rigidbody is null)
             return;
+        
+        if(Input.GetKeyDown(KeyCode.Space))
+            SpawnRocket();
 
         var forward = Vector3.ProjectOnPlane(cameraTranform.forward.normalized, Vector3.up);
         
@@ -61,6 +76,7 @@ public class RB_Move : MonoBehaviour
             rigidbody.velocity = mainTransform.forward.normalized * rigidbody.velocity.magnitude;
             
             spriteRenderer.sprite = RightSprite;
+            _sprite = SPRITE.RIGHT;
         }
         else if(Input.GetKey(KeyCode.A))
         {
@@ -68,10 +84,12 @@ public class RB_Move : MonoBehaviour
             rigidbody.velocity = mainTransform.forward.normalized * rigidbody.velocity.magnitude;
             
             spriteRenderer.sprite = LeftSprite;
+            _sprite = SPRITE.LEFT;
         }
         else
         {
             spriteRenderer.sprite = ForwardSprite;
+            _sprite = SPRITE.FORWARD;
         }
         
         Debug.DrawLine( mainTransform.position,  mainTransform.position + rigidbody.velocity.normalized, Color.green);
@@ -87,83 +105,71 @@ public class RB_Move : MonoBehaviour
 
     //Others
     //====================================================================================================================//
-    
 
+    private void SpawnRocket()
+    {
+        var rocket = Instantiate(rocketPrefab, mainTransform.position, mainTransform.rotation);
+        rocket.GetComponent<Rocket>().Init(mainTransform.forward.normalized, collider);
+    }
+
+    public void TriggerNewLap()
+    {
+        _inputEvents = new List<InputEvent>();
+        recording = true;
+    }
     
     
-    public enum KEY
+    public enum SPRITE
     {
         FORWARD,
         LEFT,
         RIGHT,
     }
+    /*public enum KEY
+    {
+        FORWARD,
+        LEFT,
+        RIGHT,
+    }*/
 
-    public struct ButtonEvent
+    /*public struct ButtonEvent
     {
         public KEY key;
         public bool state;
         public float time;
+    }*/
+
+    public struct InputEvent
+    {
+        public Vector3 position;
+        public Vector3 direction;
+        public SPRITE sprite;
+        public float time;
     }
 
-    public List<ButtonEvent> ButtonEvents => _buttonEvents;
+    public List<InputEvent> InputEvents => _inputEvents;
 
-    private List<ButtonEvent> _buttonEvents = new List<ButtonEvent>();
-    private void ReadInputs()
+    private List<InputEvent> _inputEvents = new List<InputEvent>();
+    private void TryRecordData()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (!recording)
+            return;
+        
+        if (_t < recordTime)
         {
-            _buttonEvents.Add(new ButtonEvent
-            {
-                key = KEY.FORWARD,
-                state = true,
-                time = Time.time
-            });
+            _t += Time.deltaTime;
+            return;
         }
-        else if (Input.GetKeyUp(KeyCode.W))
+
+        _t = 0f;
+        
+        _inputEvents.Add(new InputEvent
         {
-            _buttonEvents.Add(new ButtonEvent
-            {
-                key = KEY.FORWARD,
-                state = false,
-                time = Time.time
-            });
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            _buttonEvents.Add(new ButtonEvent
-            {
-                key = KEY.RIGHT,
-                state = true,
-                time = Time.time
-            });
-        }
-        else if (Input.GetKeyUp(KeyCode.D))
-        {
-            _buttonEvents.Add(new ButtonEvent
-            {
-                key = KEY.RIGHT,
-                state = false,
-                time = Time.time
-            });
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _buttonEvents.Add(new ButtonEvent
-            {
-                key = KEY.LEFT,
-                state = true,
-                time = Time.time
-            });
-        }
-        else if (Input.GetKeyUp(KeyCode.A))
-        {
-            _buttonEvents.Add(new ButtonEvent
-            {
-                key = KEY.LEFT,
-                state = false,
-                time = Time.time
-            });
-        }
+            position = mainTransform.position,
+            direction = mainTransform.forward.normalized,
+            sprite = _sprite,
+            time = Time.time
+        });
     }
     
 }
