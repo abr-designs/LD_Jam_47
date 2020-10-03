@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Manager : MonoBehaviour
 {
@@ -7,6 +9,9 @@ public class Manager : MonoBehaviour
     private RB_Move player;
     [SerializeField]
     private GameObject aiPrefab;
+
+    [SerializeField]
+    private GameObject[] obstacles;
 
     private Vector3 _startLocation;
     private Quaternion _startRotation;
@@ -24,8 +29,50 @@ public class Manager : MonoBehaviour
 
     public void CollectedPowerUp(Powerup.TYPE type)
     {
+        ShowRandomObstacle(true);
+        
+        switch (type)
+        {
+            case Powerup.TYPE.OBSTACLE:
+                ShowRandomObstacle();
+                break;
+            case Powerup.TYPE.PICKUP:
+                break;
+            case Powerup.TYPE.DIFFICULTY:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+    }
+
+    private void ShowRandomObstacle(bool hideAll = false)
+    {
+        var random = hideAll ? -1 : Random.Range(0, obstacles.Length);
+        
+        for (var i = 0; i < obstacles.Length; i++)
+        {
+            if (hideAll)
+            {
+                obstacles[i].SetActive(false);
+                continue;
+            }
+            
+            obstacles[i].SetActive(i == random);
+        }
+    }
+
+    private void ChooseRandomPickup()
+    {
         
     }
+
+    private void IncreaseDifficulty()
+    {
+        
+    }
+
+    //====================================================================================================================//
+    
 
     public void TriggerLap()
     {

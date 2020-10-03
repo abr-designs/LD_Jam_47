@@ -903,6 +903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
+  type: 0
 --- !u!4 &404761595
 Transform:
   m_ObjectHideFlags: 0
@@ -3012,6 +3013,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6025375891857996104, guid: 0d86d7bb9cc18fe41930a2e112256b7a,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6025375891857996105, guid: 0d86d7bb9cc18fe41930a2e112256b7a,
         type: 3}
       propertyPath: m_Mass
@@ -3020,7 +3026,7 @@ PrefabInstance:
     - target: {fileID: 6025375891857996108, guid: 0d86d7bb9cc18fe41930a2e112256b7a,
         type: 3}
       propertyPath: forwardForce
-      value: 0.4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6025375891857996108, guid: 0d86d7bb9cc18fe41930a2e112256b7a,
         type: 3}
@@ -3434,6 +3440,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
+  type: 0
 --- !u!4 &1869381681
 Transform:
   m_ObjectHideFlags: 0
@@ -3699,6 +3706,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1721395204}
   aiPrefab: {fileID: 864213254512742521, guid: c79af9ad47a1cd24abba8c33084a3a7a, type: 3}
+  obstacles:
+  - {fileID: 8983757797527903012}
+  - {fileID: 1768344841}
+  - {fileID: 1889518076}
+  - {fileID: 1121225606}
+  - {fileID: 878415561}
 --- !u!4 &1967680603
 Transform:
   m_ObjectHideFlags: 0
@@ -3993,6 +4006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   compareTag: Player
+  type: 0
 --- !u!4 &2115146364
 Transform:
   m_ObjectHideFlags: 0

@@ -54,6 +54,7 @@ public class RB_Move : MonoBehaviour
         collider = GetComponent<Collider>();
     }
 
+    //FIXME Also want to possibly move any rigidbody calls to FixedUpdate()
     // Update is called once per frame
     private void Update()
     {
@@ -66,9 +67,13 @@ public class RB_Move : MonoBehaviour
             SpawnRocket();
 
         var forward = Vector3.ProjectOnPlane(cameraTranform.forward.normalized, Vector3.up);
-        
-        if(Input.GetKey(KeyCode.W))
-            rigidbody.AddForce(forward * forwardForce, ForceMode.Impulse);
+
+        //FIXME May want to look this over, as i suspect this wont play nice in build
+        if (Input.GetKey(KeyCode.W))
+        {
+            var forcePosition = mainTransform.position + mainTransform.up.normalized * 0.3f;
+            rigidbody.AddForceAtPosition(forward * forwardForce, forcePosition, ForceMode.Impulse);
+        }
 
         if (Input.GetKey(KeyCode.D))
         {
