@@ -23,36 +23,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a6f517e-e7ea-49f6-afe5-cdd8a36b488c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Obstacles/Barriers.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Obstacles/Barriers.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Obstacles/Hill.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Obstacles/Hill.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Obstacles/Pole_Barriers.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Obstacles/Pole_Barriers.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Obstacles/Ramp.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Obstacles/Ramp.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Powerups/BluePowerup.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Powerups/BluePowerup.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Powerups/GreenPowerupo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Powerups/GreenPowerupo.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Powerups/RedPowerup.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Powerups/RedPowerup.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Rocket.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Rocket.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/World/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/World/Ground.mat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AIRacer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AIRacer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Managers/FactoryManager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Managers/FactoryManager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Abilities/SmokeScreen.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Abilities/SmokeScreen.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/GameUI.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/GameUI.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/ABILITY.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/ABILITY.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/FactoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/FactoryManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level/StartingLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level/StartingLine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/GameUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Prototype_Profiles.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Prototype_Profiles/FollowCamera Profile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Prototype_Profiles/FollowCamera Profile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,20 +81,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Abilities/Rocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/RB_Move.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Test_AI.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GameUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Structs/RecordEvent.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Utilities/Vector3Converter.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MainMenu.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Enums/ABILITY.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FactoryManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Abilities/Mine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/GameUI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Level/StartingLine.cs" />
       </list>
     </option>
   </component>
@@ -162,7 +143,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601683166654</updated>
       <workItem from="1601683177323" duration="15421000" />
-      <workItem from="1601726701186" duration="47063000" />
+      <workItem from="1601726701186" duration="50674000" />
     </task>
     <servers />
   </component>
@@ -267,24 +248,24 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="43" y="-12" width="1589" height="1043" maximized="true" key="dock-window-1/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601739913522" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601833307857">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1601836974340">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1601731572246" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601833307857" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1920.0.1920.1040@0.0.1920.1040" timestamp="1601836974340" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Player/Player.cs</url>
-          <line>200</line>
+          <line>216</line>
           <properties documentPath="D:\Repos\LD_JAM_47\Assets\Scripts\Player\Player.cs" initialLine="197">
             <startOffsets>
-              <option value="5528" />
+              <option value="5826" />
             </startOffsets>
             <endOffsets>
-              <option value="5528" />
+              <option value="5826" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="5" />

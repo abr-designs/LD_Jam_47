@@ -90,8 +90,9 @@ MonoBehaviour:
   elasticForce: 2
   setForce: 115
   idealDistanceFromTarget: 7
-  cleanupTimer: 30
+  cleanupTimer: 25
   billboard: 1
+  chanceOfAbility: 0
 --- !u!114 &6245328306557331962
 MonoBehaviour:
   m_ObjectHideFlags: 0

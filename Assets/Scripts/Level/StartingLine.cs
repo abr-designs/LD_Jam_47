@@ -7,7 +7,15 @@ public class StartingLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
-            _manager.TriggerLap();
+        if (!other.gameObject.CompareTag("Player"))
+            return;
+
+        var velocity = other.attachedRigidbody.velocity.normalized;
+
+        if (Vector3.Dot(velocity, transform.forward.normalized) <= 0f)
+            return;
+        
+        
+        _manager.TriggerLap();
     }
 }

@@ -17,7 +17,7 @@ public class AIRacer : RacerBase
     
     private IReadOnlyList<RecordEvent> _recordEvents;
 
-    private bool _replaying;
+    public bool _replaying;
     private int _targetIndex;
     private int _currentIndex;
     private float _t;
@@ -80,6 +80,9 @@ public class AIRacer : RacerBase
     private void FixedUpdate()
     {
         if (isDead)
+            return;
+        
+        if (!_replaying)
             return;
         
         var vector = _targetPosition - rigidbody.position;

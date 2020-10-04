@@ -51,6 +51,8 @@ public class Player : RacerBase, IInput
     
     private bool _movingForward, _turning;
     private int _turnDirection;
+
+    private bool lockControls;
     
     //Unity Functions
     //====================================================================================================================//
@@ -63,7 +65,13 @@ public class Player : RacerBase, IInput
         
         InitInput();
         Manager.CameraTransform = cameraTransform;
-        
+
+        lockControls = true;
+        Manager.RaceStartedCallback += () =>
+        {
+            lockControls = false;
+        };
+
     }
 
     protected override void Update()
@@ -104,6 +112,8 @@ public class Player : RacerBase, IInput
 
     private void FixedUpdate()
     {
+        if (lockControls)
+            return;
         
         if (_movingForward)
         {
@@ -184,6 +194,9 @@ public class Player : RacerBase, IInput
     //====================================================================================================================//
     private void ProcessMovement(InputAction.CallbackContext ctx)
     {
+        if (isDead)
+            return;
+        
         var inputValue = ctx.ReadValue<float>();
         
         _movingForward = Mathf.RoundToInt(inputValue) > 0f;
@@ -191,6 +204,9 @@ public class Player : RacerBase, IInput
 
     private void ProcessTurning(InputAction.CallbackContext ctx)
     {
+        if (isDead)
+            return;
+        
         var inputValue = ctx.ReadValue<float>();
 
         _turnDirection = Mathf.RoundToInt(inputValue);
@@ -217,6 +233,12 @@ public class Player : RacerBase, IInput
 
     private void ProccessAbility(InputAction.CallbackContext ctx)
     {
+        if (lockControls)
+            return;
+
+        if (isDead)
+            return;
+        
         var value = ctx.ReadValue<float>();
         if (value < 0.9f)
             return;

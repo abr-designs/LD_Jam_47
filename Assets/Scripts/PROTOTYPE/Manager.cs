@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,12 +9,17 @@ public class Manager : MonoBehaviour
 {
     public static Action RaceStartedCallback;
     public static Transform CameraTransform;
+
+    [SerializeField] private Transform startPositionTransform;
     
     [SerializeField]
     private Player player;
 
     [SerializeField]
     private GameObject[] obstacles;
+
+    [SerializeField, TextArea] 
+    private string jsonPath;
 
     private Vector3 _startLocation;
     private Quaternion _startRotation;
@@ -42,6 +49,10 @@ public class Manager : MonoBehaviour
         _startRotation = player.transform.rotation;
         
         AudioController.Instance.PlayMusic(AudioController.MUSIC.GAME);
+
+        RaceStartedCallback += TriggerLap;
+        
+        SpawnInitialHeat();
     }
 
     private void LateUpdate()
@@ -68,6 +79,8 @@ public class Manager : MonoBehaviour
 
     //====================================================================================================================//
 
+    private int lastObstacle;
+    private ABILITY lastAbility;
 
     public void CollectedPowerUp(PICKUP type)
     {
@@ -88,7 +101,14 @@ public class Manager : MonoBehaviour
 
     private void ShowRandomObstacle()
     {
-        var random = Random.Range(0, obstacles.Length);
+        int random = 0;
+        
+
+        while (random == lastObstacle)
+        {
+            random = Random.Range(0, obstacles.Length);
+        }
+        
         
         for (var i = 0; i < obstacles.Length; i++)
         {
@@ -99,9 +119,15 @@ public class Manager : MonoBehaviour
 
     private void ChooseRandomPickup()
     {
+        ABILITY chosenAbility = ABILITY.NONE;
         var max = Enum.GetValues(typeof(ABILITY)).Length;
-        var chosenAbility = (ABILITY) Random.Range(1, max);
-        
+
+        while (chosenAbility == lastAbility)
+        {
+            chosenAbility = (ABILITY) Random.Range(1, max);
+        }
+
+        lastAbility = chosenAbility;
         
         player.SetAbility(chosenAbility);
         _gameUI.SetPowerupText(chosenAbility.GetAbilityName());
@@ -137,12 +163,18 @@ public class Manager : MonoBehaviour
     {
         var recordEvents = player.RecordEvents;
 
-        if (recordEvents.Count > 0)
+        if (recordEvents.Count > 10)
         {
-            var count = false/*Random.value > 0.5 */? 1 : Random.Range(2, 5);
+            var count = Random.Range(4, 6);
             for (var i = 0; i < count; i++)
             {
-                SpawnAi(recordEvents, count > 1);
+                var ai = SpawnAi(recordEvents, true, i);
+                //Avoid accidenttally killing themselves
+                ai.invulnerable = true;
+                StartCoroutine(WaitCoroutine(1f, () =>
+                {
+                    ai.invulnerable = false;
+                }));
             }
             _opponents.TrimExcess();
             
@@ -152,7 +184,7 @@ public class Manager : MonoBehaviour
         if (!_startedRace)
         {
             _startedRace = true;
-            RaceStartedCallback?.Invoke();
+            //RaceStartedCallback?.Invoke();
             return;
         }
 
@@ -169,17 +201,48 @@ public class Manager : MonoBehaviour
         AddPoints(100);
 
     }
-
-    private void SpawnAi(IReadOnlyList<RecordEvent> recordEvents, bool elastic = false)
+    
+    private void SpawnInitialHeat()
     {
+        var count = 5;
+        var recordEvents = JsonConvert.DeserializeObject<List<RecordEvent>>(jsonPath);
+        for (var i = 0; i < count; i++)
+        {
+            var waitForStart = SpawnAi(recordEvents, true, i);
+            
+            waitForStart._replaying = false;
+            waitForStart.invulnerable = true;
+            
+            RaceStartedCallback += () =>
+            {
+                waitForStart._replaying = true;
+                waitForStart.invulnerable = false;
+            };
+        }
+    }
+
+    private AIRacer SpawnAi(IReadOnlyList<RecordEvent> recordEvents, bool elastic, int index)
+    {
+        var startPos = startPositionTransform.position + (Vector3.right * index);
         var temp = FactoryManager.Instance.CreateAiRacer();
-        temp.SetTransform(_startLocation + Vector3.right * Random.Range(-5, 5), _startRotation);
+        temp.SetTransform(startPos, _startRotation);
 
         temp.PlayBack(new List<RecordEvent>(recordEvents), elastic ? Random.Range(1f, 4f) : 0);
 
         _opponents.Add(temp);
+
+        return temp;
     }
 
     //====================================================================================================================//
+
+    private IEnumerator WaitCoroutine(float time, Action Callback)
+    {
+        yield return new WaitForSeconds(time);
+        
+        Callback?.Invoke();
+
+        Callback = null;
+    }
     
 }

@@ -36,6 +36,11 @@ public class GameUI : MonoBehaviour
     [SerializeField]
     private TMP_Text powerUpText;
 
+    [SerializeField, Header("Countdown")] 
+    private GameObject countDownWindow;
+    [SerializeField]
+    private Image[] lights;
+
     private IEnumerator fade;
     
     //Unity Functions
@@ -73,6 +78,9 @@ public class GameUI : MonoBehaviour
         SetPowerupText(string.Empty);
         SetPoints(0);
         SetKills(0);
+
+        countDownWindow.SetActive(true);
+        StartCoroutine(CountdownCoroutine(0.5f));
 
     }
     public void SetLapCount(int laps)
@@ -130,6 +138,13 @@ public class GameUI : MonoBehaviour
     public void ShowEndGameWindow(bool state)
     {
         endGameWindow.SetActive(state);
+        descriptionText.text = string.Join("\n", new []
+        {
+            raceTimeText.text,
+            bestTimeText.text,
+            pointsText.text,
+            killsText.text
+        });
     }
 
     //====================================================================================================================//
@@ -158,6 +173,32 @@ public class GameUI : MonoBehaviour
         powerUpText.color = _startColor;
 
         fade = null;
+    }
+
+    private IEnumerator CountdownCoroutine(float delaySeconds)
+    {
+        yield return new WaitForSeconds(delaySeconds);
+        
+        for (var i = 0; i < lights.Length; i++)
+        {
+            if (i == lights.Length - 1)
+            {
+                lights[i].color = Color.green;
+                
+                yield return new WaitForSeconds(0.2f);
+                
+                countDownWindow.SetActive(false);
+                break;
+            }
+            else
+            {
+                lights[i].color = Color.red;
+            }
+            
+            yield return new WaitForSeconds(delaySeconds);
+        }
+        
+        Manager.RaceStartedCallback?.Invoke();
     }
     
 }
