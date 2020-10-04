@@ -2568,6 +2568,7 @@ GameObject:
   - component: {fileID: 1589450738}
   - component: {fileID: 1589450737}
   - component: {fileID: 1589450736}
+  - component: {fileID: 1589450740}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -2673,6 +2674,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1589450740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589450735}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AssetsPPU: 32
+  m_RefResolutionX: 320
+  m_RefResolutionY: 180
+  m_UpscaleRT: 1
+  m_PixelSnapping: 0
+  m_CropFrameX: 1
+  m_CropFrameY: 1
+  m_StretchFill: 0
 --- !u!1 &1633902912
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,7 +3926,7 @@ PrefabInstance:
     - target: {fileID: 5141125505401183493, guid: a21107dc2ccef3841a2ecf04adbf2254,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5481763397145135039, guid: a21107dc2ccef3841a2ecf04adbf2254,
         type: 3}

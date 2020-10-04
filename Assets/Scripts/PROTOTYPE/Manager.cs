@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 
 public class Manager : MonoBehaviour
 {
+    public static Transform CameraTransform;
+    
     [SerializeField]
     private Player player;
 

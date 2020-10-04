@@ -39,7 +39,6 @@ public class AIRacer : RacerBase
     protected override void Update()
     {
         followTransform.position = rigidbody.position;
-        //followTransform.rotation = rigidbody.rotation;
         
         if (isDead)
             return;
@@ -49,7 +48,15 @@ public class AIRacer : RacerBase
 
         NextFrame();
     }
-    
+
+    private void LateUpdate()
+    {
+        var dir = Vector3.ProjectOnPlane(
+            (spriteRenderer.transform.position - Manager.CameraTransform.position).normalized, Vector3.up);
+        
+        spriteRenderer.transform.forward = dir;
+    }
+
     private void FixedUpdate()
     {
         if (isDead)
@@ -136,7 +143,7 @@ public class AIRacer : RacerBase
                 _currentIndex = 0;
             }
 
-            SetSprite(_recordEvents[_currentIndex].Sprite);
+            SetState(_recordEvents[_currentIndex].State);
 
             var item = _recordEvents[_currentIndex].Ability;
             if (item != ABILITY.NONE)

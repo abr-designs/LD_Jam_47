@@ -54,6 +54,7 @@ public class Player : RacerBase, IInput
         base.Start();
         
         InitInput();
+        Manager.CameraTransform = cameraTransform;
     }
 
     protected override void Update()
@@ -87,7 +88,7 @@ public class Player : RacerBase, IInput
         if (isDead)
             return;
         
-        SetSprite(CurrentSprite);
+        SetState(CurrentState);
     }
 
     private void FixedUpdate()
@@ -123,8 +124,6 @@ public class Player : RacerBase, IInput
         rigidbody.drag = 3;
         
         
-        //spriteRenderer.transform.SetParent(rigidbody.transform);
-        spriteRenderer.sprite = sprites[2];
         spriteRenderer.color = new Color(0.3f, 0.3f, 0.3f);
     }
 
@@ -182,15 +181,15 @@ public class Player : RacerBase, IInput
 
         if (_turnDirection > 0)
         {
-            CurrentSprite = SPRITE.RIGHT;
+            CurrentState = STATE.RIGHT;
         }
         else if (_turnDirection < 0)
         {
-            CurrentSprite = SPRITE.LEFT;
+            CurrentState = STATE.LEFT;
         }
         else
         {
-            CurrentSprite = SPRITE.FORWARD;
+            CurrentState = STATE.FORWARD;
         } 
     }
 
@@ -242,7 +241,7 @@ public class Player : RacerBase, IInput
         {
             Position = followTransform.position,
             Direction = followTransform.forward.normalized,
-            Sprite = CurrentSprite,
+            State = CurrentState,
             Time = Time.time
         });
     }
@@ -256,7 +255,7 @@ public class Player : RacerBase, IInput
         {
             Position = followTransform.position,
             Direction = followTransform.forward.normalized,
-            Sprite = CurrentSprite,
+            State = CurrentState,
             Ability = ability,
             Time = Time.time
         });

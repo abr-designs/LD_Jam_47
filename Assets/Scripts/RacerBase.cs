@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider), typeof(Rigidbody))]
+[RequireComponent(typeof(Collider), typeof(Rigidbody), typeof(SimpleAnimator))]
 public abstract class RacerBase : MonoBehaviour, ICanCrash
 {
     protected static Manager _manager;
@@ -16,12 +16,12 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
 
     //====================================================================================================================//
 
-    [SerializeField, Header("Sprites")]
-    protected Sprite[] sprites;
+    //[SerializeField, Header("Sprites")]
+    //protected Sprite[] sprites;
 
-    [SerializeField] 
+    [SerializeField, Header("Sprites")] 
     protected SpriteRenderer spriteRenderer;
-    protected SPRITE CurrentSprite;
+    protected STATE CurrentState;
 
     //====================================================================================================================//
     
@@ -39,6 +39,7 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     
     protected new Rigidbody rigidbody;
     protected new Collider collider;
+    private SimpleAnimator _animator;
 
     //Unity Functions
     //====================================================================================================================//
@@ -51,6 +52,9 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
 
         collider = GetComponent<Collider>();
         rigidbody = GetComponent <Rigidbody>();
+        _animator = GetComponent<SimpleAnimator>();
+        
+        SetState(STATE.FORWARD);
     }
 
     protected abstract void Update();
@@ -66,6 +70,7 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
         
         Crashed(other.contacts[0].point);
         CreateCrashEffects(other);
+        SetState(STATE.DEAD);
     }
 
     //ICanCrash Functions
@@ -76,28 +81,13 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     //RacerBase Functions
     //====================================================================================================================//
 
-    protected void SetSprite(SPRITE sprite)
+    protected void SetState(STATE state)
     {
-        int index;
-        spriteRenderer.flipX = false;
-        switch (sprite)
-        {
-            case SPRITE.FORWARD:
-                index = 0;
-                
-                break;
-            case SPRITE.LEFT:
-                index = 1;
-                spriteRenderer.flipX = true;
-                break;
-            case SPRITE.RIGHT:
-                index = 1;
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(sprite), sprite, null);
-        }
+        if (!_animator)
+            return;
 
-        spriteRenderer.sprite = sprites[index];
+        _animator.SetState(state);
+        _animator.SetSpeed(rigidbody.velocity.magnitude / 25f);
     }
 
 

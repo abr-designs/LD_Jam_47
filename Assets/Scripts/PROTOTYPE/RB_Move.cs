@@ -45,7 +45,7 @@ public class RB_Move : MonoBehaviour
     [SerializeField]
     private GameObject rocketPrefab;
 
-    private SPRITE _sprite;
+    private STATE _state;
     
     //Unity Functions
     //====================================================================================================================//
@@ -95,7 +95,7 @@ public class RB_Move : MonoBehaviour
             rigidbody.velocity = mainTransform.forward.normalized * rigidbody.velocity.magnitude;
             
             spriteRenderer.sprite = RightSprite;
-            _sprite = SPRITE.RIGHT;
+            _state = STATE.RIGHT;
         }
         else if(Input.GetKey(KeyCode.A))
         {
@@ -103,12 +103,12 @@ public class RB_Move : MonoBehaviour
             rigidbody.velocity = mainTransform.forward.normalized * rigidbody.velocity.magnitude;
             
             spriteRenderer.sprite = LeftSprite;
-            _sprite = SPRITE.LEFT;
+            _state = STATE.LEFT;
         }
         else
         {
             spriteRenderer.sprite = ForwardSprite;
-            _sprite = SPRITE.FORWARD;
+            _state = STATE.FORWARD;
         }
         
         Debug.DrawLine( mainTransform.position,  mainTransform.position + rigidbody.velocity.normalized, Color.green);
@@ -177,7 +177,7 @@ public class RB_Move : MonoBehaviour
         public ABILITY item;
         public Vector3 position;
         public Vector3 direction;
-        public SPRITE sprite;
+        public STATE State;
         public float time;
     }
 
@@ -201,7 +201,7 @@ public class RB_Move : MonoBehaviour
         {
             position = mainTransform.position,
             direction = mainTransform.forward.normalized,
-            sprite = _sprite,
+            State = _state,
             time = Time.time
         });
     }
@@ -216,7 +216,7 @@ public class RB_Move : MonoBehaviour
             item = ability,
             position = mainTransform.position,
             direction = mainTransform.forward.normalized,
-            sprite = _sprite,
+            State = _state,
             time = Time.time
         });
     }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6586232615280167434}
   m_Layer: 0
-  m_Name: AI
+  m_Name: AIRacer
   m_TagString: Racer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,6 +42,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6586232615503875470}
   - component: {fileID: 8521976508128080605}
+  - component: {fileID: 6245328306557331962}
   - component: {fileID: 6586232615503875467}
   - component: {fileID: 6586232615503875466}
   m_Layer: 0
@@ -77,17 +78,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7afa553a1bd28d439bf052f8032b91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: -5251916465442562966, guid: f02bef5b81bcdea4491fa0cb24fe4380, type: 3}
-  - {fileID: -7712232967804709193, guid: f02bef5b81bcdea4491fa0cb24fe4380, type: 3}
-  - {fileID: -1909723499980459196, guid: f02bef5b81bcdea4491fa0cb24fe4380, type: 3}
   spriteRenderer: {fileID: 6586232616516526711}
+  groundCheckMask:
+    serializedVersion: 2
+    m_Bits: 0
   followTransform: {fileID: 6586232616136823509}
   parentTransform: {fileID: 6586232615280167434}
   isElastic: 0
   elasticForce: 2
   setForce: 115
   idealDistanceFromTarget: 7
+--- !u!114 &6245328306557331962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6586232615503875461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb635b95790f39545af24b44c364fa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6586232616516526711}
+  states:
+  - {fileID: 11400000, guid: bfb95cf4871b7c549bbcff9a321229cd, type: 2}
+  - {fileID: 11400000, guid: cb5cb56e4c653eb40ad98377e42d136e, type: 2}
+  - {fileID: 11400000, guid: bfcb93c0c14d96e41938d74ead203c28, type: 2}
+  - {fileID: 11400000, guid: 1cb68d60b0b15794ab082710d0b06d6f, type: 2}
 --- !u!135 &6586232615503875467
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -218,7 +236,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5251916465442562966, guid: f02bef5b81bcdea4491fa0cb24fe4380,
+  m_Sprite: {fileID: -7921649188387484213, guid: 4ee1ba7aed81daa4a8ded2cf2200084b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

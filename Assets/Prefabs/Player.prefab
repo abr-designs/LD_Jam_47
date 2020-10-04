@@ -877,6 +877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6055532571488578858}
   - component: {fileID: 9002469246060453301}
+  - component: {fileID: 7784668093752318091}
   - component: {fileID: 6055532571488578863}
   - component: {fileID: 6055532571488578862}
   m_Layer: 8
@@ -926,6 +927,24 @@ MonoBehaviour:
   forwardForce: 2
   turnSpeed: 50
   trailParent: {fileID: 5248039844418697731}
+--- !u!114 &7784668093752318091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6055532571488578849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb635b95790f39545af24b44c364fa4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 6055532570490045139}
+  states:
+  - {fileID: 11400000, guid: bfb95cf4871b7c549bbcff9a321229cd, type: 2}
+  - {fileID: 11400000, guid: cb5cb56e4c653eb40ad98377e42d136e, type: 2}
+  - {fileID: 11400000, guid: bfcb93c0c14d96e41938d74ead203c28, type: 2}
+  - {fileID: 11400000, guid: 1cb68d60b0b15794ab082710d0b06d6f, type: 2}
 --- !u!135 &6055532571488578863
 SphereCollider:
   m_ObjectHideFlags: 0

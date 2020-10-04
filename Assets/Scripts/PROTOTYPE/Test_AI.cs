@@ -183,15 +183,15 @@ public class Test_AI : MonoBehaviour
                 currentIndex = 0;
             }
 
-            switch (_inputEvents[currentIndex].sprite)
+            switch (_inputEvents[currentIndex].State)
             {
-                case SPRITE.FORWARD:
+                case STATE.FORWARD:
                     spriteRenderer.sprite = ForwardSprite;
                     break;
-                case SPRITE.LEFT:
+                case STATE.LEFT:
                     spriteRenderer.sprite = LeftSprite;
                     break;
-                case SPRITE.RIGHT:
+                case STATE.RIGHT:
                     spriteRenderer.sprite = RightSprite;
                     break;
                 default:

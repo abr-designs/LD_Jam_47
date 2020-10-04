@@ -30,7 +30,7 @@ public class FactoryManager : MonoBehaviour
     
     public AIRacer CreateAiRacer()
     {
-        return Instantiate(AiRacerPrefab).GetComponentInChildren<AIRacer>();
+        return  Instantiate(AiRacerPrefab).GetComponentInChildren<AIRacer>();
     }
 
     //Abilities
