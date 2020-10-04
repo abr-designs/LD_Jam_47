@@ -74,11 +74,16 @@ public class MainMenu : MonoBehaviour
         var recordEvents = JsonConvert.DeserializeObject<List<RecordEvent>>(menuPath);
         for (var i = 0; i < count; i++)
         {
-            SpawnAi(recordEvents, true, i == 0, i);
+            var ai = SpawnAi(recordEvents, true, i == 0, i);
+            ai.invulnerable = true;
+            StartCoroutine(Manager.WaitCoroutine(3, () =>
+            {
+                ai.invulnerable = false;
+            }));
         }
     }
 
-    private void SpawnAi(IReadOnlyList<RecordEvent> recordEvents, bool elastic, bool useAudio, int index)
+    private AIRacer SpawnAi(IReadOnlyList<RecordEvent> recordEvents, bool elastic, bool useAudio, int index)
     {
         var startPos = startPositionTransform.position + (Vector3.right * index);
         var startRotation = startPositionTransform.rotation;
@@ -88,6 +93,8 @@ public class MainMenu : MonoBehaviour
             temp.SetTransform(startPos, startRotation);
 
         temp.PlayBack(new List<RecordEvent>(recordEvents), elastic ? Random.Range(1f, 4f) : 0);
+
+        return temp;
     }
 
     #endregion //Spawn Background Elements

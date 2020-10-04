@@ -236,7 +236,7 @@ public class Manager : MonoBehaviour
 
     //====================================================================================================================//
 
-    private IEnumerator WaitCoroutine(float time, Action Callback)
+    public static IEnumerator WaitCoroutine(float time, Action Callback)
     {
         yield return new WaitForSeconds(time);
         

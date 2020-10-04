@@ -122,10 +122,14 @@ public class AIRacer : RacerBase
 
     #region Playback
 
-    public void PlayBack(IReadOnlyList<RecordEvent> inputEvents, float elasticicty)
+    public void PlayBack(List<RecordEvent> inputEvents, float elasticicty )
     {
-        isElastic = elasticicty > 0f;
+        elasticicty = UnityEngine.Random.value <= 0.25f ? 0 : elasticicty;
+        
+        isElastic =  elasticicty > 0f;
         elasticForce = elasticicty;
+
+        CleanFrames(ref inputEvents);
         
         //TODO Need to add a way of cleaning the last recorded position
         _recordEvents = inputEvents;
@@ -134,6 +138,23 @@ public class AIRacer : RacerBase
         _t = 0;
 
         _replaying = true;
+    }
+
+    private void CleanFrames(ref List<RecordEvent> inputEvents)
+    {
+        var firstEvent = inputEvents[0];
+        var secondLastEvent = inputEvents[inputEvents.Count - 2];
+        
+        var lastEvent = inputEvents[inputEvents.Count - 1];
+        
+        inputEvents[inputEvents.Count - 1] = new RecordEvent
+        {
+            Ability =  lastEvent.Ability,
+            Time = lastEvent.Time,
+            State = lastEvent.State,
+            Direction = (firstEvent.Direction + secondLastEvent.Direction)/2f,
+            Position = (firstEvent.Position + secondLastEvent.Position)/2f,
+        };
     }
 
     private void NextFrame()
@@ -224,6 +245,7 @@ public class AIRacer : RacerBase
             Gizmos.DrawWireSphere(temp.Position, 0.3f);
             Gizmos.DrawLine(_recordEvents[i].Position, temp.Position);
         }
+        Gizmos.DrawWireSphere(_recordEvents[_recordEvents.Count - 1].Position, 0.3f);
         Gizmos.DrawLine(_recordEvents[_recordEvents.Count - 1].Position, _recordEvents[0].Position);
         
         Gizmos.color = Color.red;
