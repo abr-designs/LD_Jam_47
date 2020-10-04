@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
+[DefaultExecutionOrder(-1000)]
 public class AudioController : MonoBehaviour
 {
     public enum MUSIC
@@ -12,12 +13,18 @@ public class AudioController : MonoBehaviour
         GAME
     }
 
+    public static AudioController Instance => _instance;
+    private static AudioController _instance;
+
     private const string SFX_VOLUME = "SFXVolume";
     private const string MUSIC_VOLUME = "MusicVolume";
     private const string VOLUME = "Volume";
     
+    
     [SerializeField]
     private AudioMixer gameMixer;
+    [SerializeField]
+    private AudioMixer musicMixer;
 
 
     [SerializeField]
@@ -27,13 +34,27 @@ public class AudioController : MonoBehaviour
 
     //Unity Functions
     //====================================================================================================================//
-    
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        
+        if(_instance != null)
+            Destroy(gameObject);
+
+        _instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
+    // Start is called before the first frame update
+    private void Start()
+    {
+        PlayMusic(MUSIC.MENU);
+    }
+
+    private void OnDestroy()
+    {
+        if (_instance == this)
+            _instance = null;
+    }
     //AudioController Functions
     //====================================================================================================================//
     
@@ -42,11 +63,11 @@ public class AudioController : MonoBehaviour
         switch (music)
         {
             case MUSIC.MENU:
-                gameMixer.TransitionToSnapshots(new[] {menuMusicSnapshot, gameMusicSnapshot}, new[] {1f, 0f}, 2f);
+                musicMixer.TransitionToSnapshots(new[] {menuMusicSnapshot, gameMusicSnapshot}, new[] {1f, 0f}, 2f);
                 
                 break;
             case MUSIC.GAME:
-                gameMixer.TransitionToSnapshots(new[] {menuMusicSnapshot, gameMusicSnapshot}, new[] {0f, 1f}, 2f);
+                musicMixer.TransitionToSnapshots(new[] {menuMusicSnapshot, gameMusicSnapshot}, new[] {0f, 1f}, 2f);
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(music), music, null);

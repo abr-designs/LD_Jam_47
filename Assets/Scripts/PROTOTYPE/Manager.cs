@@ -40,6 +40,8 @@ public class Manager : MonoBehaviour
         
         _startLocation = player.transform.position;
         _startRotation = player.transform.rotation;
+        
+        AudioController.Instance.PlayMusic(AudioController.MUSIC.GAME);
     }
 
     private void LateUpdate()

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameMixer: {fileID: 24100000, guid: 37b9ce4065380a243950d870a27f59e4, type: 2}
+  musicMixer: {fileID: 24100000, guid: 2d3c4c30c5a041d40a69b9bdec6c6fa9, type: 2}
   menuMusicSnapshot: {fileID: -5375114324734824810, guid: 2d3c4c30c5a041d40a69b9bdec6c6fa9,
     type: 2}
   gameMusicSnapshot: {fileID: -3807390140982068937, guid: 2d3c4c30c5a041d40a69b9bdec6c6fa9,
@@ -92,15 +93,15 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -9206735713901815242, guid: 2d3c4c30c5a041d40a69b9bdec6c6fa9,
     type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: 6b62355d8e1f0014bb9343077432c12b, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 36
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -220,15 +221,15 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1171328460340735332, guid: 2d3c4c30c5a041d40a69b9bdec6c6fa9,
     type: 2}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_audioClip: {fileID: 8300000, guid: c212e52fa1635e344956d6c5864dbe2e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.2
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 36
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
