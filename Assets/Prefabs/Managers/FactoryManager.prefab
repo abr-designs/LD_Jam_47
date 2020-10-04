@@ -57,3 +57,5 @@ MonoBehaviour:
     type: 3}
   carExplosionAudioPrefab: {fileID: 3099857773099913034, guid: 0b281d516edb8714fa13bb3b7db74108,
     type: 3}
+  carCollisionAudioPrefab: {fileID: 1110545752100649621, guid: ccb7d4d1b4f3cb4458b94048568db2f5,
+    type: 3}

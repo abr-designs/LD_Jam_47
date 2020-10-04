@@ -20,7 +20,8 @@ public class FactoryManager : MonoBehaviour
     private GameObject powerupAudioPrefab;
     [SerializeField]
     private GameObject carExplosionAudioPrefab;
-
+    [SerializeField]
+    private GameObject carCollisionAudioPrefab;
     //Unity Functions
     //====================================================================================================================//
     
@@ -81,5 +82,9 @@ public class FactoryManager : MonoBehaviour
     public GameObject CreateCarExplosionAudio()
     {
         return Instantiate(carExplosionAudioPrefab);
+    }
+    public GameObject CreateCarCollisionAudio()
+    {
+        return Instantiate(carCollisionAudioPrefab);
     }
 }

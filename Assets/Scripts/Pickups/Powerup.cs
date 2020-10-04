@@ -11,6 +11,8 @@ public class Powerup : PickupBase
     private float resetTime = 3f;
     private float _t;
     private bool coolingDown;
+
+    private bool disabled;
     
     //====================================================================================================================//
 
@@ -27,8 +29,26 @@ public class Powerup : PickupBase
 
     //====================================================================================================================//
 
+    protected override void Start()
+    {
+        base.Start();
+
+        Manager.RaceStartedCallback += () =>
+        {
+            SetActive(true);
+            disabled = false;
+        };
+
+        //Hide at start until race begins
+        disabled = true;
+        SetActive(false);
+    }
+
     private void LateUpdate()
     {
+        if (disabled)
+            return;
+        
         if (!coolingDown)
             return;
 

@@ -36,6 +36,8 @@ public class AIRacer : RacerBase
     [SerializeField] 
     private float cleanupTimer = 30f;
 
+    [SerializeField] private bool billboard;
+
     //Unity Functions
     //====================================================================================================================//
 
@@ -54,10 +56,14 @@ public class AIRacer : RacerBase
 
     private void LateUpdate()
     {
-        var dir = Vector3.ProjectOnPlane(
-            (spriteRenderer.transform.position - Manager.CameraTransform.position).normalized, Vector3.up);
+        if (billboard)
+        {
+            var dir = Vector3.ProjectOnPlane(
+                (spriteRenderer.transform.position - Manager.CameraTransform.position).normalized, Vector3.up);
         
-        spriteRenderer.transform.forward = dir;
+            spriteRenderer.transform.forward = dir;
+        }
+        
 
         if (!isDead)
             return;

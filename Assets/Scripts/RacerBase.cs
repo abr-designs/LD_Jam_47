@@ -13,6 +13,8 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     public bool isDead { get; protected set; }
     public abstract float impactForce { get; }
 
+    protected float currentSpeed;
+
 
     //====================================================================================================================//
 
@@ -67,8 +69,13 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
         if (invulnerable)
             return;
         
-        if (other.impulse.magnitude < impactForce)
+        var magnitude = other.impulse.magnitude;
+        if (magnitude < impactForce)
+        {
+            if(magnitude > 10)
+                CreateCollisionAudioEffect(magnitude / impactForce);
             return;
+        }
         
         Crashed(other);
     }
@@ -78,15 +85,7 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
 
     public abstract void Crashed(Collision collision);
 
-    protected void CreateCrashAudioEffect()
-    {
-        SetEngineSound(0f, true);
-        
-        var soundTransform = FactoryManager.Instance.CreateCarExplosionAudio().transform;
-        soundTransform.position = followTransform.position;
-        
-        Destroy(soundTransform.gameObject, 2f);
-    }
+    
 
     //RacerBase Functions
     //====================================================================================================================//
@@ -96,14 +95,17 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
         if (!_animator)
             return;
 
-        var speedNrm = rigidbody.velocity.magnitude / 25f;
+        currentSpeed = rigidbody.velocity.magnitude / 25f;
         _animator.SetState(state);
-        _animator.SetSpeed(speedNrm);
+        _animator.SetSpeed(currentSpeed);
 
         if(!isDead)
-            SetEngineSound(speedNrm);
+            SetEngineSound(currentSpeed);
     }
 
+    //Audio
+    //====================================================================================================================//
+    
     private void SetEngineSound(float value, bool disable = false)
     {
         if (!engineAudioSource)
@@ -116,6 +118,25 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
         }
         
         engineAudioSource.pitch = Mathf.Lerp(0.5f, 3, value);
+    }
+    
+    protected void CreateCrashAudioEffect()
+    {
+        SetEngineSound(0f, true);
+        
+        var soundTransform = FactoryManager.Instance.CreateCarExplosionAudio().transform;
+        soundTransform.position = followTransform.position;
+        
+        Destroy(soundTransform.gameObject, 2f);
+    }
+    
+    protected void CreateCollisionAudioEffect(float volume)
+    {
+        var soundTransform = FactoryManager.Instance.CreateCarCollisionAudio().transform;
+        soundTransform.GetComponent<AudioSource>().volume = Mathf.Lerp(0.05f, 0.2f, volume);
+        soundTransform.position = followTransform.position;
+        
+        Destroy(soundTransform.gameObject, 2f);
     }
 
 
@@ -131,7 +152,7 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
             case ABILITY.ROCKET:
                 var rocket = FactoryManager.Instance.CreateRocket();
                 rocket.transform.position = followTransform.position;
-                rocket.Init(followTransform.forward, collider);
+                rocket.Init(followTransform.forward, collider, gameObject.tag);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

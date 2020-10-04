@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,14 +20,30 @@ public class GameUI : MonoBehaviour
     [SerializeField]
     private Button restartButton;
 
+    [SerializeField, Header("Lap Texts")] 
+    private TMP_Text lapText;
+    [SerializeField]
+    private TMP_Text raceTimeText;
+    [SerializeField]
+    private TMP_Text lapTimeText;
+    [SerializeField]
+    private TMP_Text bestTimeText;
+    
+    [SerializeField, Header("Other Texts")] 
+    private TMP_Text pointsText;
+    [SerializeField]
+    private TMP_Text killsText;
+    [SerializeField]
+    private TMP_Text powerUpText;
+
+    private IEnumerator fade;
+    
     //Unity Functions
     //====================================================================================================================//
     
     private void Start()
     {
-        ShowEndGameWindow(false);
-        
-        InitButtons();
+        InitUI();
     }
     
 
@@ -41,8 +58,106 @@ public class GameUI : MonoBehaviour
         });
     }
 
+    //====================================================================================================================//
+
+    private void InitUI()
+    {
+        ShowEndGameWindow(false);
+        InitButtons();
+
+        
+        SetLapCount(0);
+        SetRaceTime(0f);
+        SetLapTime(0f);
+        SetBestTime(0f);
+        SetPowerupText(string.Empty);
+        SetPoints(0);
+        SetKills(0);
+
+    }
+    public void SetLapCount(int laps)
+    {
+        lapText.text = $"Lap {laps}";
+    }
+
+    public void SetRaceTime(float seconds)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(seconds);
+
+        raceTimeText.text = $"Total {time:m\\:ss}:{time.Milliseconds:00}";
+    }
+
+    public void SetLapTime(float seconds)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(seconds);
+
+        lapTimeText.text = $"Time {time:m\\:ss}:{time.Milliseconds:00}";
+    }
+
+    public void SetBestTime(float seconds)
+    {
+        TimeSpan time = TimeSpan.FromSeconds(seconds);
+
+        bestTimeText.text = $"Best {time:m\\:ss}:{time.Milliseconds:00}";
+    }
+
+    public void SetPoints(int points)
+    {
+        pointsText.text = $"Points {points}";
+    }
+
+    public void SetKills(int kills)
+    {
+        killsText.text = $"Kills {kills}";
+    }
+
+    public void SetPowerupText(string powerup)
+    {
+        powerUpText.text = $"{powerup}";
+
+        if (string.IsNullOrEmpty(powerup))
+            return;
+
+        if (fade != null)
+        {
+            powerUpText.color = _startColor;
+            StopCoroutine(fade);
+        }
+
+        StartCoroutine(FadeCoroutine(2));
+    }
+    
     public void ShowEndGameWindow(bool state)
     {
         endGameWindow.SetActive(state);
     }
+
+    //====================================================================================================================//
+
+    private Color _startColor;
+    private IEnumerator FadeCoroutine(float waitSeconds)
+    {
+        _startColor = powerUpText.color;
+        var endColor = _startColor;
+        endColor.a = 0f;
+
+        var t = 0f;
+        
+        yield return new WaitForSeconds(waitSeconds);
+
+        while (t < 1f)
+        {
+            powerUpText.color = Color.Lerp(_startColor, endColor, t);
+
+            t += Time.deltaTime;
+
+            yield return null;
+        }
+
+        powerUpText.text = string.Empty;
+        powerUpText.color = _startColor;
+
+        fade = null;
+    }
+    
 }

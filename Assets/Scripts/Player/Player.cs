@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +20,8 @@ public class Player : RacerBase, IInput
 
     [SerializeField, Header("Player")]
     private Transform cameraTransform;
+
+    [SerializeField] private CinemachineVirtualCamera _virtualCamera;
 
     [SerializeField]
     private float forwardForce = 0.5f;
@@ -87,6 +90,8 @@ public class Player : RacerBase, IInput
             followTransform.rotation *= Quaternion.Euler(Vector3.up * (turnSpeed * Time.deltaTime * _turnDirection));
 
         CheckForGround();
+
+        UpdateCameraOffset();
     }
 
     private void LateUpdate()
@@ -99,6 +104,7 @@ public class Player : RacerBase, IInput
 
     private void FixedUpdate()
     {
+        
         if (_movingForward)
         {
             var forcePosition = followTransform.position + followTransform.up.normalized * 0.3f;
@@ -193,11 +199,11 @@ public class Player : RacerBase, IInput
 
         
         
-        
 
         if (_turnDirection > 0)
         {
             CurrentState = STATE.RIGHT;
+            
         }
         else if (_turnDirection < 0)
         {
@@ -223,6 +229,15 @@ public class Player : RacerBase, IInput
     }
 
     #endregion //Inputs
+
+    private float offset;
+    private void UpdateCameraOffset()
+    {
+        offset = Mathf.MoveTowards(offset, _turnDirection*currentSpeed, 5 * Time.deltaTime);
+        
+        var composer = _virtualCamera.GetCinemachineComponent<CinemachineComposer>();
+        composer.m_TrackedObjectOffset = new Vector3(offset, composer.m_TrackedObjectOffset.y, 0f);
+    }
 
     //Player Functions
     //====================================================================================================================//

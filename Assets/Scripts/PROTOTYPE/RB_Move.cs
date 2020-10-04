@@ -147,7 +147,7 @@ public class RB_Move : MonoBehaviour
     private void SpawnRocket()
     {
         var rocket = Instantiate(rocketPrefab, mainTransform.position, mainTransform.rotation);
-        rocket.GetComponent<Rocket>().Init(mainTransform.forward.normalized, collider);
+        rocket.GetComponent<Rocket>().Init(mainTransform.forward.normalized, collider,"");
     }
 
     public void TriggerNewLap()

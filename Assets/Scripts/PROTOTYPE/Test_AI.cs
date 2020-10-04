@@ -248,7 +248,7 @@ public class Test_AI : MonoBehaviour
     private void SpawnRocket()
     {
         var rocket = Instantiate(rocketPrefab, mainTransform.position, mainTransform.rotation);
-        rocket.GetComponent<Rocket>().Init(mainTransform.forward.normalized, GetComponent<Collider>());
+        rocket.GetComponent<Rocket>().Init(mainTransform.forward.normalized, GetComponent<Collider>(),"");
     }
 
     private void OnDrawGizmosSelected()

@@ -2,6 +2,8 @@
 
 public class Rocket : MonoBehaviour
 {
+    private static Manager _manager;
+    
     private new Rigidbody rigidbody;
 
     private bool ready;
@@ -14,6 +16,7 @@ public class Rocket : MonoBehaviour
     [SerializeField]
     private Transform modelTransform;
 
+    private string _from;
 
     //Unity Functions
     //====================================================================================================================//
@@ -39,10 +42,13 @@ public class Rocket : MonoBehaviour
         if (collision.gameObject.GetComponent<ICanCrash>() is ICanCrash iCanCrash && !iCanCrash.isDead)
         {
             iCanCrash.Crashed(collision);
+
+            if (_from.Equals("Player")) _manager.AddKill();
         }
         else if (collision.gameObject.GetComponentInParent<ICanCrash>() is ICanCrash iCanCrash2 && !iCanCrash2.isDead)
         {
             iCanCrash2.Crashed(collision);
+            if (_from.Equals("Player")) _manager.AddKill();
         }
         else
         {
@@ -58,8 +64,13 @@ public class Rocket : MonoBehaviour
 
     //====================================================================================================================//
     
-    public void Init(Vector3 direction, Collider ignoreCollider)
+    public void Init(Vector3 direction, Collider ignoreCollider, string from)
     {
+        if (!_manager)
+            _manager = FindObjectOfType<Manager>();
+        
+        _from = from;
+        
         modelTransform.up = direction;
         
         

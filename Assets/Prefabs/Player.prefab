@@ -922,6 +922,7 @@ MonoBehaviour:
   followTransform: {fileID: 6055532570571731569}
   parentTransform: {fileID: 6055532571457809070}
   cameraTransform: {fileID: 6055532571635023583}
+  _virtualCamera: {fileID: 6055532571635023582}
   forwardForce: 2
   turnSpeed: 50
   trailParent: {fileID: 5248039844418697731}
@@ -996,7 +997,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6055532571635023569}
-  m_LocalRotation: {x: 0.07535119, y: -1.6887923e-18, z: 2.234826e-17, w: 0.9971571}
+  m_LocalRotation: {x: 0.07535119, y: -1.6887688e-18, z: 2.2348258e-17, w: 0.9971571}
   m_LocalPosition: {x: -13.83, y: 1.86, z: -13.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

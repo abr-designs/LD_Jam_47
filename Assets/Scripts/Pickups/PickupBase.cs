@@ -12,7 +12,7 @@ public abstract class PickupBase : MonoBehaviour
     protected new Collider collider;
     
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void Start()
     {
         collider = GetComponent<Collider>();
         collider.isTrigger = true;
