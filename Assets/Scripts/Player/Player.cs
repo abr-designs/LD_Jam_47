@@ -31,6 +31,8 @@ public class Player : RacerBase, IInput
     
     private ABILITY _activeAbility;
 
+    private GameUI _gameUI;
+
     //====================================================================================================================//
     
     private List<RecordEvent> _recordEvents = new List<RecordEvent>();
@@ -52,6 +54,8 @@ public class Player : RacerBase, IInput
     protected override void Start()
     {
         base.Start();
+
+        _gameUI = FindObjectOfType<GameUI>();
         
         InitInput();
         Manager.CameraTransform = cameraTransform;
@@ -134,6 +138,8 @@ public class Player : RacerBase, IInput
         
         CreateCrashEffects(collision);
         SetState(STATE.DEAD);
+
+        StartCoroutine(ShowEndScreenCoroutine(3f));
     }
 
     //IInput Functions
@@ -267,7 +273,15 @@ public class Player : RacerBase, IInput
 
     #endregion //Recording
 
-    
 
+    //Coroutines
+    //====================================================================================================================//
+
+    private IEnumerator ShowEndScreenCoroutine(float waitSeconds)
+    {
+        yield return new WaitForSeconds(waitSeconds);
+        
+        _gameUI.ShowEndGameWindow(true);
+    }
 
 }

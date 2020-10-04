@@ -26,6 +26,12 @@ public class FactoryManager : MonoBehaviour
         _instance = this;
     }
 
+    private void OnDestroy()
+    {
+        if (_instance == this)
+            _instance = null;
+    }
+
     //====================================================================================================================//
     
     public AIRacer CreateAiRacer()
