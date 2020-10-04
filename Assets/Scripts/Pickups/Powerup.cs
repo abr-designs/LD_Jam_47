@@ -49,6 +49,8 @@ public class Powerup : PickupBase
         _manager.CollectedPowerUp(type);
 
         SetActive(false);
+
+        CreatePowerupAudioEffect();
     }
 
     //====================================================================================================================//
@@ -61,7 +63,14 @@ public class Powerup : PickupBase
         coolingDown = !state;
         _t = 0f;
     }
-    
+
+    private void CreatePowerupAudioEffect()
+    {
+        var soundTransform = FactoryManager.Instance.CreatePowerupAudio().transform;
+        soundTransform.position = transform.position;
+        
+        Destroy(soundTransform.gameObject, 2f);
+    }
 }
 
 

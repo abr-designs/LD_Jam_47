@@ -71,13 +71,22 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
             return;
         
         Crashed(other);
-
     }
 
     //ICanCrash Functions
     //====================================================================================================================//
 
     public abstract void Crashed(Collision collision);
+
+    protected void CreateCrashAudioEffect()
+    {
+        SetEngineSound(0f, true);
+        
+        var soundTransform = FactoryManager.Instance.CreateCarExplosionAudio().transform;
+        soundTransform.position = followTransform.position;
+        
+        Destroy(soundTransform.gameObject, 2f);
+    }
 
     //RacerBase Functions
     //====================================================================================================================//
@@ -95,10 +104,18 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
             SetEngineSound(speedNrm);
     }
 
-    protected void SetEngineSound(float value)
+    private void SetEngineSound(float value, bool disable = false)
     {
-        if(engineAudioSource)
-            engineAudioSource.pitch = Mathf.Lerp(0.5f, 3, value);
+        if (!engineAudioSource)
+            return;
+
+        if (disable)
+        {
+            engineAudioSource.enabled = false;
+            return;
+        }
+        
+        engineAudioSource.pitch = Mathf.Lerp(0.5f, 3, value);
     }
 
 

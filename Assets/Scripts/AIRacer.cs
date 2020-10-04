@@ -100,6 +100,7 @@ public class AIRacer : RacerBase
         rigidbody.angularDrag = 1;
         rigidbody.drag = 1f;
         
+        CreateCrashAudioEffect();
         CreateCrashEffects(collision);
         SetState(STATE.DEAD);
     }

@@ -11,9 +11,15 @@ public class FactoryManager : MonoBehaviour
     private GameObject FireEffectPrefab;
     [SerializeField]
     private GameObject ExplosionEffectPrefab;
-
     [SerializeField]
     private GameObject rocketPrefab;
+
+    [SerializeField, Header("Audio Prefabs")]
+    private GameObject rocketExplosionAudioPrefab;
+    [SerializeField]
+    private GameObject powerupAudioPrefab;
+    [SerializeField]
+    private GameObject carExplosionAudioPrefab;
 
     //Unity Functions
     //====================================================================================================================//
@@ -61,7 +67,19 @@ public class FactoryManager : MonoBehaviour
         return Instantiate(ExplosionEffectPrefab);
     }
 
+    //Audio
     //====================================================================================================================//
     
-    
+    public GameObject CreateRocketExplosionAudio()
+    {
+        return Instantiate(rocketExplosionAudioPrefab);
+    }
+    public GameObject CreatePowerupAudio()
+    {
+        return Instantiate(powerupAudioPrefab);
+    }
+    public GameObject CreateCarExplosionAudio()
+    {
+        return Instantiate(carExplosionAudioPrefab);
+    }
 }

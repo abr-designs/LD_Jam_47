@@ -51,3 +51,9 @@ MonoBehaviour:
     type: 3}
   rocketPrefab: {fileID: 4734114607623212167, guid: c032f8d9c20ac5846a0f12e6cade39c9,
     type: 3}
+  rocketExplosionAudioPrefab: {fileID: 3606075255080413595, guid: 2e9e4517cfe2e5741b4517890eff2839,
+    type: 3}
+  powerupAudioPrefab: {fileID: 6546280569936563872, guid: b7bfef5d5158d0245b1750fbc738ddb2,
+    type: 3}
+  carExplosionAudioPrefab: {fileID: 3099857773099913034, guid: 0b281d516edb8714fa13bb3b7db74108,
+    type: 3}

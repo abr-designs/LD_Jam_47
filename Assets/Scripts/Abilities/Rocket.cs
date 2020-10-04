@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
@@ -14,6 +13,7 @@ public class Rocket : MonoBehaviour
 
     [SerializeField]
     private Transform modelTransform;
+
 
     //Unity Functions
     //====================================================================================================================//
@@ -51,7 +51,7 @@ public class Rocket : MonoBehaviour
             temp.forward = collision.contacts[0].normal;
         }
 
-
+        PlayCollisionSound(collision.contacts[0].point);
         
         Destroy(gameObject);
     }
@@ -72,5 +72,12 @@ public class Rocket : MonoBehaviour
         ready = true;
         
         rigidbody.AddForce(_direction * force, ForceMode.VelocityChange);
+    }
+
+    private void PlayCollisionSound(Vector3 worldPosition)
+    {
+        var sound = FactoryManager.Instance.CreateRocketExplosionAudio().transform;
+        sound.position = worldPosition;
+        Destroy(sound.gameObject, 2f);
     }
 }

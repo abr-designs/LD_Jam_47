@@ -136,6 +136,7 @@ public class Player : RacerBase, IInput
         
         spriteRenderer.color = new Color(0.3f, 0.3f, 0.3f);
         
+        CreateCrashAudioEffect();
         CreateCrashEffects(collision);
         SetState(STATE.DEAD);
 
