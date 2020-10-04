@@ -16,6 +16,8 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
 
     //====================================================================================================================//
 
+    [SerializeField]
+    private AudioSource engineAudioSource;
     //[SerializeField, Header("Sprites")]
     //protected Sprite[] sprites;
 
@@ -85,8 +87,18 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
         if (!_animator)
             return;
 
+        var speedNrm = rigidbody.velocity.magnitude / 25f;
         _animator.SetState(state);
-        _animator.SetSpeed(rigidbody.velocity.magnitude / 25f);
+        _animator.SetSpeed(speedNrm);
+
+        if(!isDead)
+            SetEngineSound(speedNrm);
+    }
+
+    protected void SetEngineSound(float value)
+    {
+        if(engineAudioSource)
+            engineAudioSource.pitch = Mathf.Lerp(0.5f, 3, value);
     }
 
 

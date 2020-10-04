@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7afa553a1bd28d439bf052f8032b91a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  engineAudioSource: {fileID: 0}
   spriteRenderer: {fileID: 6586232616516526711}
   groundCheckMask:
     serializedVersion: 2

@@ -3991,7 +3991,6 @@ GameObject:
   - component: {fileID: 1589450738}
   - component: {fileID: 1589450737}
   - component: {fileID: 1589450736}
-  - component: {fileID: 1589450740}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -4097,26 +4096,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1589450740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1589450735}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AssetsPPU: 32
-  m_RefResolutionX: 640
-  m_RefResolutionY: 360
-  m_UpscaleRT: 1
-  m_PixelSnapping: 0
-  m_CropFrameX: 1
-  m_CropFrameY: 1
-  m_StretchFill: 0
 --- !u!1 &1598589486
 GameObject:
   m_ObjectHideFlags: 0
@@ -5811,36 +5790,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6055532570938304497, guid: ab7a5ecfd10cb9947b74efdc5963a5d0,
-        type: 3}
-      propertyPath: m_TrackedObjectOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6055532570938304497, guid: ab7a5ecfd10cb9947b74efdc5963a5d0,
-        type: 3}
-      propertyPath: m_SoftZoneWidth
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6055532570938304497, guid: ab7a5ecfd10cb9947b74efdc5963a5d0,
-        type: 3}
-      propertyPath: m_DeadZoneWidth
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6055532570938304497, guid: ab7a5ecfd10cb9947b74efdc5963a5d0,
-        type: 3}
-      propertyPath: m_DeadZoneHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6055532570938304497, guid: ab7a5ecfd10cb9947b74efdc5963a5d0,
-        type: 3}
-      propertyPath: m_ScreenX
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6055532570938304497, guid: ab7a5ecfd10cb9947b74efdc5963a5d0,
-        type: 3}
-      propertyPath: m_BiasX
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6055532571457809057, guid: ab7a5ecfd10cb9947b74efdc5963a5d0,
         type: 3}
       propertyPath: m_Name

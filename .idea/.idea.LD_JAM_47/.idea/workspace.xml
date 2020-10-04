@@ -25,16 +25,10 @@
     <list default="true" id="8a6f517e-e7ea-49f6-afe5-cdd8a36b488c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.LD_JAM_47/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AIRacer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AIRacer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Track.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Track.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PROTOTYPE/bowser.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PROTOTYPE/bowser.gif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PROTOTYPE/mario.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/PROTOTYPE/mario.gif.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Player.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/Prototype.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/GraphicsSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,13 +75,13 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Animations/SimpleAnimator.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/FactoryManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Interfaces/ICanCrash.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Abilities/Rocket.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Player/Player.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/PickupBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Pickups/Powerup.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AIRacer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/PROTOTYPE/Manager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/RacerBase.cs" />
       </list>
     </option>
   </component>
@@ -135,7 +129,7 @@
       <option name="presentableId" value="Default" />
       <updated>1601683166654</updated>
       <workItem from="1601683177323" duration="15421000" />
-      <workItem from="1601726701186" duration="27789000" />
+      <workItem from="1601726701186" duration="29194000" />
     </task>
     <servers />
   </component>
