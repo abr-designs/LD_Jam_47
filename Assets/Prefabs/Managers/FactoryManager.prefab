@@ -49,6 +49,8 @@ MonoBehaviour:
     type: 3}
   ExplosionEffectPrefab: {fileID: 1270680580519330523, guid: 99996843bce5b6345a5d1df8e195d883,
     type: 3}
+  confettiEffectPrefab: {fileID: 5063008246581621304, guid: de197dc7510b65b41b102052bd43a05e,
+    type: 3}
   rocketPrefab: {fileID: 4734114607623212167, guid: c032f8d9c20ac5846a0f12e6cade39c9,
     type: 3}
   minePrefab: {fileID: 4460906180394779413, guid: 04df1aa9ef71a614d9aecaab1b4bd398,

@@ -127,7 +127,7 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     //Audio
     //====================================================================================================================//
     
-    private void SetEngineSound(float value, bool disable = false)
+    protected void SetEngineSound(float value, bool disable = false)
     {
         if (!engineAudioSource || !useAudio)
             return;

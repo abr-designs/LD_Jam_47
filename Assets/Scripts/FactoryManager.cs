@@ -11,6 +11,8 @@ public class FactoryManager : MonoBehaviour
     private GameObject FireEffectPrefab;
     [SerializeField]
     private GameObject ExplosionEffectPrefab;
+    [SerializeField]
+    private GameObject confettiEffectPrefab;
     
     [SerializeField, Header("Abilities")]
     private GameObject rocketPrefab;
@@ -85,6 +87,11 @@ public class FactoryManager : MonoBehaviour
     public GameObject CreateExplosionEffect()
     {
         return Instantiate(ExplosionEffectPrefab);
+    }
+    
+    public GameObject CreateConfettiEffect()
+    {
+        return Instantiate(confettiEffectPrefab);
     }
 
     //Audio

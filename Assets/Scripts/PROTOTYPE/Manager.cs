@@ -101,7 +101,7 @@ public class Manager : MonoBehaviour
 
     private void ShowRandomObstacle()
     {
-        int random = 0;
+        int random = Random.Range(0, obstacles.Length);
         
 
         while (random == lastObstacle)
@@ -119,8 +119,8 @@ public class Manager : MonoBehaviour
 
     private void ChooseRandomPickup()
     {
-        ABILITY chosenAbility = ABILITY.NONE;
         var max = Enum.GetValues(typeof(ABILITY)).Length;
+        ABILITY chosenAbility = (ABILITY) Random.Range(1, max);
 
         while (chosenAbility == lastAbility)
         {

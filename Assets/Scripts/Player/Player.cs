@@ -76,6 +76,8 @@ public class Player : RacerBase, IInput
 
     protected override void Update()
     {
+        
+        
         followTransform.position = rigidbody.position;
 
         if (Grounded)
@@ -108,6 +110,8 @@ public class Player : RacerBase, IInput
             return;
         
         SetState(CurrentState);
+        if(lockControls)
+            SetEngineSound(_movingForward ? 1f : 0f);
     }
 
     private void FixedUpdate()
@@ -196,6 +200,7 @@ public class Player : RacerBase, IInput
     {
         if (isDead)
             return;
+        
         
         var inputValue = ctx.ReadValue<float>();
         

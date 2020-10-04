@@ -78,7 +78,7 @@ public class Powerup : PickupBase
 
         SetActive(false);
 
-        CreatePowerupAudioEffect();
+        CreatePowerupEffects();
     }
 
     //====================================================================================================================//
@@ -92,10 +92,13 @@ public class Powerup : PickupBase
         _t = 0f;
     }
 
-    private void CreatePowerupAudioEffect()
+    private void CreatePowerupEffects()
     {
         var soundTransform = FactoryManager.Instance.CreatePowerupAudio().transform;
         soundTransform.position = transform.position;
+        
+        var confettiTransform = FactoryManager.Instance.CreateConfettiEffect().transform;
+        confettiTransform.position = transform.position;
         
         Destroy(soundTransform.gameObject, 2f);
     }

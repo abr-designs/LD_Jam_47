@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Canvas))]
 public class GameUI : MonoBehaviour
@@ -114,12 +115,31 @@ public class GameUI : MonoBehaviour
         pointsText.text = $"Points {points}";
     }
 
+    private string[] _kills =
+    {
+        "Klone Killed!",
+        "+1000",
+        "Dust To Dust",
+        "Taken Care of",
+        "Obliterated",
+        "More Incoming"
+    };
+    
     public void SetKills(int kills)
     {
         killsText.text = $"Kills {kills}";
+        if (kills > 0)
+        {
+            var rand = Random.Range(0, _kills.Length);
+            SetPowerupText(_kills[rand], new Color(0.8156863f, 0.2745098f, 0.282353f));
+        }
     }
 
     public void SetPowerupText(string powerup)
+    {
+        SetPowerupText(powerup, Color.white);
+    }
+    public void SetPowerupText(string powerup, Color color)
     {
         powerUpText.text = $"{powerup}";
 
@@ -128,10 +148,11 @@ public class GameUI : MonoBehaviour
 
         if (fade != null)
         {
-            powerUpText.color = _startColor;
+            powerUpText.color = color;
             StopCoroutine(fade);
         }
 
+        powerUpText.color = color;
         StartCoroutine(FadeCoroutine(2));
     }
     
@@ -169,8 +190,8 @@ public class GameUI : MonoBehaviour
             yield return null;
         }
 
-        powerUpText.text = string.Empty;
-        powerUpText.color = _startColor;
+        //powerUpText.text = string.Empty;
+        //powerUpText.color = _startColor;
 
         fade = null;
     }
