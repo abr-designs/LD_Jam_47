@@ -81,13 +81,14 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6586232616516526711}
   groundCheckMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   followTransform: {fileID: 6586232616136823509}
   parentTransform: {fileID: 6586232615280167434}
   isElastic: 0
   elasticForce: 2
   setForce: 115
   idealDistanceFromTarget: 7
+  cleanupTimer: 30
 --- !u!114 &6245328306557331962
 MonoBehaviour:
   m_ObjectHideFlags: 0

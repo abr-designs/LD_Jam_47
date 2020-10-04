@@ -29,8 +29,6 @@ public class Manager : MonoBehaviour
 
     public void CollectedPowerUp(PICKUP type)
     {
-        ShowRandomObstacle(true);
-        
         switch (type)
         {
             case PICKUP.OBSTACLE:
@@ -45,18 +43,12 @@ public class Manager : MonoBehaviour
         }
     }
 
-    private void ShowRandomObstacle(bool hideAll = false)
+    private void ShowRandomObstacle()
     {
-        var random = hideAll ? -1 : Random.Range(0, obstacles.Length);
+        var random = Random.Range(-1, obstacles.Length);
         
         for (var i = 0; i < obstacles.Length; i++)
         {
-            if (hideAll)
-            {
-                obstacles[i].SetActive(false);
-                continue;
-            }
-            
             obstacles[i].SetActive(i == random);
         }
     }

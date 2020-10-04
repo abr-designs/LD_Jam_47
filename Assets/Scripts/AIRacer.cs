@@ -33,6 +33,9 @@ public class AIRacer : RacerBase
     [SerializeField]
     private float idealDistanceFromTarget = 7f;
 
+    [SerializeField] 
+    private float cleanupTimer = 30f;
+
     //Unity Functions
     //====================================================================================================================//
 
@@ -55,6 +58,14 @@ public class AIRacer : RacerBase
             (spriteRenderer.transform.position - Manager.CameraTransform.position).normalized, Vector3.up);
         
         spriteRenderer.transform.forward = dir;
+
+        if (!isDead)
+            return;
+
+        cleanupTimer -= Time.deltaTime;
+        
+        if(cleanupTimer <= 0f)
+            Destroy(parentTransform.gameObject);
     }
 
     private void FixedUpdate()
