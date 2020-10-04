@@ -77,13 +77,20 @@ public class AIRacer : RacerBase
     //ICanCrash Functions
     //====================================================================================================================//
     
-    public override void Crashed(Vector3 point)
+    public override void Crashed(Collision collision)
     {
+        if (isDead)
+            return;
+        
+        var point = collision.contacts[0].point;
         isDead = true;
         spriteRenderer.color = new Color(0.2f, 0.2f, 0.2f);
         rigidbody.AddExplosionForce(20, point, 5);
         rigidbody.angularDrag = 1;
         rigidbody.drag = 1f;
+        
+        CreateCrashEffects(collision);
+        SetState(STATE.DEAD);
     }
 
     //AIRacer Functions
@@ -145,9 +152,9 @@ public class AIRacer : RacerBase
 
             SetState(_recordEvents[_currentIndex].State);
 
-            var item = _recordEvents[_currentIndex].Ability;
-            if (item != ABILITY.NONE)
-                CreateItem(item);
+            var ability = _recordEvents[_currentIndex].Ability;
+            if (ability != ABILITY.NONE)
+                ActivateAbility(ability);
             
             _t = 0f;
             return;
@@ -167,19 +174,7 @@ public class AIRacer : RacerBase
         rigidbody.position = position;
         rigidbody.rotation = rotation;
     }
-
-    private void CreateItem(ABILITY ability)
-    {
-        switch (ability)
-        {
-            case ABILITY.NONE:
-                break;
-            case ABILITY.ROCKET:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
+    
 
     //Unity Editor
     //====================================================================================================================//

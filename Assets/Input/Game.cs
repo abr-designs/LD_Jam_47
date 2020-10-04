@@ -180,7 +180,7 @@ public class @Game : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""ae5a5ed8-ea89-4fce-88f1-bc0c761eb5df"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Use_Ability"",

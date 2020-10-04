@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Rocket : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Rocket : MonoBehaviour
 
     private Vector3 _direction;
 
+    [SerializeField]
+    private Transform modelTransform;
+
     //Unity Functions
     //====================================================================================================================//
     
@@ -22,20 +26,33 @@ public class Rocket : MonoBehaviour
         rigidbody.AddForce(_direction * force);
     }*/
 
-    private void OnCollisionEnter(Collision other)
+    private void LateUpdate()
+    {
+        modelTransform.localRotation *= Quaternion.Euler(Vector3.up * (180f * Time.deltaTime));
+    }
+
+    private void OnCollisionEnter(Collision collision)
     {
         if(!ready)
             return;
 
-        if (other.gameObject.GetComponent<ICanCrash>() is ICanCrash iCanCrash)
+        if (collision.gameObject.GetComponent<ICanCrash>() is ICanCrash iCanCrash && !iCanCrash.isDead)
         {
-            iCanCrash.Crashed(other.contacts[0].point);
+            iCanCrash.Crashed(collision);
         }
-        else if (other.gameObject.GetComponentInParent<ICanCrash>() is ICanCrash iCanCrash2)
+        else if (collision.gameObject.GetComponentInParent<ICanCrash>() is ICanCrash iCanCrash2 && !iCanCrash2.isDead)
         {
-            iCanCrash2.Crashed(other.contacts[0].point);
+            iCanCrash2.Crashed(collision);
+        }
+        else
+        {
+            var temp = FactoryManager.Instance.CreateExplosionEffect().transform;
+            temp.position = collision.contacts[0].point;
+            temp.forward = collision.contacts[0].normal;
         }
 
+
+        
         Destroy(gameObject);
     }
 
@@ -43,6 +60,9 @@ public class Rocket : MonoBehaviour
     
     public void Init(Vector3 direction, Collider ignoreCollider)
     {
+        modelTransform.up = direction;
+        
+        
         var collider = GetComponent<Collider>();
         Physics.IgnoreCollision(ignoreCollider, collider);
         collider.enabled = true;

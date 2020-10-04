@@ -68,15 +68,14 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
         if (other.impulse.magnitude < impactForce)
             return;
         
-        Crashed(other.contacts[0].point);
-        CreateCrashEffects(other);
-        SetState(STATE.DEAD);
+        Crashed(other);
+
     }
 
     //ICanCrash Functions
     //====================================================================================================================//
 
-    public abstract void Crashed(Vector3 point);
+    public abstract void Crashed(Collision collision);
 
     //RacerBase Functions
     //====================================================================================================================//
@@ -93,7 +92,24 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
 
     //====================================================================================================================//
 
-    private void CreateCrashEffects(Collision collision)
+    protected void ActivateAbility(ABILITY ability)
+    {
+        if (ability == ABILITY.NONE)
+            return;
+
+        switch (ability)
+        {
+            case ABILITY.ROCKET:
+                var rocket = FactoryManager.Instance.CreateRocket();
+                rocket.transform.position = followTransform.position;
+                rocket.Init(followTransform.forward, collider);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
+
+    protected void CreateCrashEffects(Collision collision)
     {
         var position = collision.contacts[0].point;
         var normal = collision.contacts[0].normal;

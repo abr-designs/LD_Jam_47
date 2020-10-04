@@ -55,6 +55,8 @@ public class Player : RacerBase, IInput
         
         InitInput();
         Manager.CameraTransform = cameraTransform;
+
+        _activeAbility = ABILITY.ROCKET;
     }
 
     protected override void Update()
@@ -115,8 +117,12 @@ public class Player : RacerBase, IInput
     //ICanCrash Functions
     //====================================================================================================================//
 
-    public override void Crashed(Vector3 point)
+    public override void Crashed(Collision collision)
     {
+        if (isDead)
+            return;
+        
+        var point = collision.contacts[0].point;
         isDead = true;
         
         rigidbody.AddExplosionForce(20, point, 5);
@@ -125,6 +131,9 @@ public class Player : RacerBase, IInput
         
         
         spriteRenderer.color = new Color(0.3f, 0.3f, 0.3f);
+        
+        CreateCrashEffects(collision);
+        SetState(STATE.DEAD);
     }
 
     //IInput Functions
@@ -195,19 +204,14 @@ public class Player : RacerBase, IInput
 
     private void ProccessAbility(InputAction.CallbackContext ctx)
     {
+        var value = ctx.ReadValue<float>();
+        if (value < 0.9f)
+            return;
+
         if (_activeAbility == ABILITY.NONE)
             return;
 
-        switch (_activeAbility)
-        {
-            case ABILITY.ROCKET:
-                var rocket = FactoryManager.Instance.CreateRocket();
-                rocket.Init(followTransform.forward.normalized, collider);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-        
+        ActivateAbility(_activeAbility);
         RecordUseAbility(_activeAbility);
     }
 
