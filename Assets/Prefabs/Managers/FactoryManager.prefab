@@ -51,6 +51,10 @@ MonoBehaviour:
     type: 3}
   rocketPrefab: {fileID: 4734114607623212167, guid: c032f8d9c20ac5846a0f12e6cade39c9,
     type: 3}
+  minePrefab: {fileID: 4460906180394779413, guid: 04df1aa9ef71a614d9aecaab1b4bd398,
+    type: 3}
+  smokeScreenPrefab: {fileID: 9098426014487357449, guid: f699851c2811274409eac27593bfc6a0,
+    type: 3}
   rocketExplosionAudioPrefab: {fileID: 3606075255080413595, guid: 2e9e4517cfe2e5741b4517890eff2839,
     type: 3}
   powerupAudioPrefab: {fileID: 6546280569936563872, guid: b7bfef5d5158d0245b1750fbc738ddb2,

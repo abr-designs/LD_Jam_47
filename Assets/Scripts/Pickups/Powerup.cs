@@ -13,6 +13,8 @@ public class Powerup : PickupBase
     private bool coolingDown;
 
     private bool disabled;
+
+    private Vector3 startPosition;
     
     //====================================================================================================================//
 
@@ -33,6 +35,8 @@ public class Powerup : PickupBase
     {
         base.Start();
 
+        startPosition = transform.position;
+
         Manager.RaceStartedCallback += () =>
         {
             SetActive(true);
@@ -49,6 +53,9 @@ public class Powerup : PickupBase
         if (disabled)
             return;
         
+        transform.position = startPosition + Vector3.up * (Mathf.Sin(Time.time)* 0.5f);
+        transform.rotation *= Quaternion.Euler(Vector3.up * (90 * Time.deltaTime));
+        
         if (!coolingDown)
             return;
 
@@ -59,6 +66,7 @@ public class Powerup : PickupBase
         }
 
         SetActive(true);
+        
     }
 
     protected override void OnTriggered(Collider other)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class AIRacer : RacerBase
 {
@@ -37,6 +38,8 @@ public class AIRacer : RacerBase
     private float cleanupTimer = 30f;
 
     [SerializeField] private bool billboard;
+    [SerializeField] private bool chanceOfAbility;
+    
 
     //Unity Functions
     //====================================================================================================================//
@@ -171,8 +174,11 @@ public class AIRacer : RacerBase
             SetState(_recordEvents[_currentIndex].State);
 
             var ability = _recordEvents[_currentIndex].Ability;
-            if (ability != ABILITY.NONE)
+            var chance = chanceOfAbility ? UnityEngine.Random.value : 1;
+            if (ability != ABILITY.NONE && chance > 0.5f)
+            {
                 ActivateAbility(ability);
+            }
             
             _t = 0f;
             return;

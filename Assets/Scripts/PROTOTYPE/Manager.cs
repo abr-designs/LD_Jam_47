@@ -88,7 +88,7 @@ public class Manager : MonoBehaviour
 
     private void ShowRandomObstacle()
     {
-        var random = Random.Range(-1, obstacles.Length);
+        var random = Random.Range(0, obstacles.Length);
         
         for (var i = 0; i < obstacles.Length; i++)
         {
@@ -99,13 +99,18 @@ public class Manager : MonoBehaviour
 
     private void ChooseRandomPickup()
     {
-        _gameUI.SetPowerupText("Power-Up");
+        var max = Enum.GetValues(typeof(ABILITY)).Length;
+        var chosenAbility = (ABILITY) Random.Range(1, max);
+        
+        
+        player.SetAbility(chosenAbility);
+        _gameUI.SetPowerupText(chosenAbility.GetAbilityName());
     }
 
-    private void IncreaseDifficulty()
+    /*private void IncreaseDifficulty()
     {
         
-    }
+    }*/
 
     //====================================================================================================================//
 

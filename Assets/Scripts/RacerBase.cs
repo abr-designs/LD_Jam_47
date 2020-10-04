@@ -8,7 +8,13 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     //ICanCrash Properties
     //====================================================================================================================//
 
-    public bool invulnerable { get; set; }
+    public bool invulnerable
+    {
+        get => _invulnerable;
+        set => _invulnerable = value;
+    }
+    [SerializeField]
+    private bool _invulnerable;
     
     public bool isDead { get; protected set; }
     public abstract float impactForce { get; }
@@ -17,6 +23,21 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
 
 
     //====================================================================================================================//
+
+    public bool useAudio
+    {
+        get => _useAudio;
+        set
+        {
+            if (!value && engineAudioSource)
+                engineAudioSource.Stop();
+
+            _useAudio = value;
+
+        }
+    }
+
+    private bool _useAudio = true;
 
     [SerializeField]
     private AudioSource engineAudioSource;
@@ -108,7 +129,7 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
     
     private void SetEngineSound(float value, bool disable = false)
     {
-        if (!engineAudioSource)
+        if (!engineAudioSource || !useAudio)
             return;
 
         if (disable)
@@ -153,6 +174,17 @@ public abstract class RacerBase : MonoBehaviour, ICanCrash
                 var rocket = FactoryManager.Instance.CreateRocket();
                 rocket.transform.position = followTransform.position;
                 rocket.Init(followTransform.forward, collider, gameObject.tag);
+                break;
+            case ABILITY.MINE:
+                var mine = FactoryManager.Instance.CreateMine();
+                mine.transform.position = followTransform.position;
+                mine.Init(collider, gameObject.tag);
+                break;
+            case ABILITY.SMOKE:
+                var smoke = FactoryManager.Instance.CreateSmokeScreen().transform;
+                var pos = followTransform.position;
+                pos.y = 0f;
+                smoke.transform.position = pos;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

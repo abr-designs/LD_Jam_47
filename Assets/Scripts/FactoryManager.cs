@@ -11,8 +11,13 @@ public class FactoryManager : MonoBehaviour
     private GameObject FireEffectPrefab;
     [SerializeField]
     private GameObject ExplosionEffectPrefab;
-    [SerializeField]
+    
+    [SerializeField, Header("Abilities")]
     private GameObject rocketPrefab;
+    [SerializeField]
+    private GameObject minePrefab;
+    [SerializeField]
+    private GameObject smokeScreenPrefab;
 
     [SerializeField, Header("Audio Prefabs")]
     private GameObject rocketExplosionAudioPrefab;
@@ -27,10 +32,14 @@ public class FactoryManager : MonoBehaviour
     
     private void Awake()
     {
-        if(_instance != null)
-            throw new Exception($"{nameof(FactoryManager)} already exists");
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         _instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnDestroy()
@@ -52,6 +61,16 @@ public class FactoryManager : MonoBehaviour
     public Rocket CreateRocket()
     {
         return Instantiate(rocketPrefab).GetComponent<Rocket>();
+    }
+    
+    public Mine CreateMine()
+    {
+        return Instantiate(minePrefab).GetComponent<Mine>();
+    }
+    
+    public GameObject CreateSmokeScreen()
+    {
+        return Instantiate(smokeScreenPrefab);
     }
     
     //Effects

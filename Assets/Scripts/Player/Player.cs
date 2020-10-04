@@ -33,6 +33,7 @@ public class Player : RacerBase, IInput
 
     
     private ABILITY _activeAbility;
+    public void SetAbility(ABILITY ability) => _activeAbility = ability;
 
     private GameUI _gameUI;
 
@@ -62,8 +63,7 @@ public class Player : RacerBase, IInput
         
         InitInput();
         Manager.CameraTransform = cameraTransform;
-
-        _activeAbility = ABILITY.ROCKET;
+        
     }
 
     protected override void Update()
@@ -226,6 +226,7 @@ public class Player : RacerBase, IInput
 
         ActivateAbility(_activeAbility);
         RecordUseAbility(_activeAbility);
+        _activeAbility = ABILITY.NONE;
     }
 
     #endregion //Inputs
